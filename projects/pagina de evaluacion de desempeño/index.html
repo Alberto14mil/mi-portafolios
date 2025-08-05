@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Desempeño de Redes Sociales</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Evaluación de Desempeño de Redes Sociales</h1>
+            <p>Mide, evalúa y reconoce el impacto en tus redes como creado de contenido y se tu el que evalua y califica para que logre sus metas.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="actores" class="section-card">
+            <h2>Nuestros Evaluados</h2>
+            <div class="actors-grid">
+                <div class="actor-card">
+                    <h3>creador de contenido</h3>
+                    <p>Luis Medina</p>
+                    <p>Persona cuyo desempeño en redes sociales será objeto de evaluación.</p>
+                </div>
+                <div class="actor-card">
+                    <h3>influencer</h3>
+                    <p>María Ramírez</p>
+                    <p>Persona cuyo desempeño en redes sociales será objeto de evaluación.</p>
+                </div>
+                 <div class="actor-card">
+                    <h3>creadora digital</h3>
+                    <p>Carolina Molina</p>
+                    <p>Persona cuyo desempeño en redes sociales será objeto de evaluación.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="auth-section" class="section-card">
+            <h2 id="auth-title">Regístrate o Inicia Sesión</h2>
+            <form id="auth-form" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary" id="login-button">Iniciar Sesión</button>
+                <button type="button" class="btn-secondary" id="register-button">Registrarme</button>
+            </form>
+            <p id="auth-message" style="text-align: center; margin-top: 15px; color: var(--primary-color); font-weight: bold;"></p>
+            <button type="button" class="btn-primary" id="logout-button" style="display: none; margin-top: 20px;">Cerrar Sesión</button>
+        </section>
+
+        <section id="votacion" class="section-card" style="display: none;">
+            <h2>Sistema de Votación</h2>
+            <p>¡Hola <span id="current-user"></span>! ¡Tu opinión cuenta! Vota por el desempeño más destacado.</p>
+            <form id="voting-form" class="voting-form">
+                <div class="form-group">
+                    <label for="evaluado-select">Selecciona un Evaluado:</label>
+                    <select id="evaluado-select" name="evaluado">
+                        <option value="">-- Selecciona --</option>
+                        <option value="luis">Luis Medina</option>
+                        <option value="maria">María Ramírez</option>
+                        <option value="carolina">Carolina Molina</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Votar</button>
+            </form>
+            <div class="voting-results">
+                <h3>Resultados de Votación</h3>
+                <div class="chart-container">
+                    <canvas id="votingChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="ganadores" class="section-card">
+            <h2>Ganadores de la Votación</h2>
+            <div class="winners-display">
+                <div class="winner-card" id="mejor-evaluado-card">
+                    <h3>Mejor Evaluado</h3>
+                    <p class="winner-name">¡Esperando votos!</p>
+                    <p class="winner-score"></p>
+                </div>
+                </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="show-winners-effect" class="btn-primary">Ver Ganadores con Efecto</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Evaluación de Desempeño de Redes Sociales. Todos los derechos reservados.</p>
+        <p class="developer-portfolio"><i class="fas fa-folder"></i> portafolio: <a href="../../index.html" target="_blank" rel="noopener noreferrer">portafolio</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

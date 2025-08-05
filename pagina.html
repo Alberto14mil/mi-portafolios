@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alberto Brito - Perfil Profesional Detallado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/estilos-pagina.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="pagina-body">
+
+    <div class="theme-switcher">
+        <div id="matrix-theme-btn" class="theme-btn" title="Tema Matrix Green"><i class="fas fa-code"></i></div>
+        <div id="blue-theme-btn" class="theme-btn" title="Tema Azul Marino"><i class="fas fa-tint"></i></div>
+    </div>
+
+    <div id="code-intro-screen">
+        <canvas id="code-canvas"></canvas>
+        <div class="code-intro-content">
+            <h1>Cargando Perfil...</h1>
+            <p>Preparando la matriz de datos de Alberto.dev</p>
+            <button id="enter-profile-btn" class="btn hidden">Entrar al Perfil</button>
+        </div>
+    </div>
+
+    <div id="profile-main-content" class="hidden-initially">
+        <header class="header">
+            <div class="container navbar">
+                <a href="index.html" class="logo">Alberto.dev</a> <nav>
+                    <ul class="nav-list">
+                        <li><a href="#personal-info">Perfil</a></li>
+                        <li><a href="#work-experience">Experiencia</a></li>
+                        <li><a href="#education">Educación</a></li>
+                        <li><a href="#skills">Habilidades</a></li>
+                        <li><a href="#projects-summary">Proyectos</a></li>
+                        <li><a href="#contact-detailed">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="personal-info" class="section profile-hero">
+                <div class="container profile-header-content">
+                    <div class="profile-picture-container">
+                        <img src="images/tu_foto2.jpg" alt="Tu Foto de Perfil" class="profile-picture">
+                    </div>
+                    <div class="profile-text-header">
+                        <h2>Hola, soy Alberto Antonio Brito Mujica</h2>
+                        <p class="subtitle">TSU en Informática | Desarrollador Web | Analista de Datos</p>
+                        <p class="summary" id="about-me-text">
+                            Durante mi trayectoria laboral, he adquirido gran confianza en mi conocimiento sobre la gestión de costos, tanto a nivel comercial como financiero. Además, he implementado mejoras productivas clave, organizando procesos para maximizar su aprovechamiento en las áreas de planta y administrativa de la empresa.
+                        </p>
+                        <div class="social-links-profile">
+                            <a href="https://www.linkedin.com/in/alberto-brito-a88942135/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Alberto14mil" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        <div class="cv-options-detailed">
+                            <a href="docs/alberto sistesis curruclar ALBERTO  BRITO.pdf" target="_blank" class="btn main-cv-btn">
+                                <i class="fas fa-eye"></i> Ver CV Completo
+                            </a>
+                            <a href="docs/alberto sistesis curruclar ALBERTO  BRITO.pdf" download class="btn download-cv-btn">
+                                <i class="fas fa-download"></i> Descargar CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                </section>
+
+            <section id="work-experience" class="section">
+                <div class="container">
+                    <h2>Experiencia Laboral</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">ago. 2022 - actualidad · 3 años 1 mes</div>
+                            <div class="timeline-content">
+                                <h3>Servicio de atención al cliente</h3>
+                                <h4>INVERSIONES SELVA C.A. · Jornada completa</h4>
+                                <p>Maracay, Estado Aragua, Venezuela</p>
+                                <ul>
+                                    <li>Hojas de cálculo</li>
+                                    <li>Servicios al cliente</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">ago. 2016 - ago. 2022 · 6 años 1 mes</div>
+                            <div class="timeline-content">
+                                <h3>Especialista de costo</h3>
+                                <h4>www.metalesaleados.com · Presencial</h4>
+                                <p>venezuela aragua</p>
+                                <p>Realización de estructuras de costos, desglose de mercancía, pesaje, ganancia y costos. Gestión de la explosión de materiales, con auditoría y revisiones de inventario. Adicionalmente, se realiza la proyección de ventas y compras para el flujo de caja con fines de declaraciones</p>
+                                <ul>
+                                    <li>Hojas de cálculo</li>
+                                    <li>Auditoría</li>
+                                    <li>Y 3 aptitudes más</li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </section>
+
+            <section id="education" class="section alternate-bg">
+                <div class="container">
+                    <h2>Educación</h2>
+                    <div class="education-item">
+                        <h3>Tecnicatura, Informática</h3>
+                        <p class="institution-date">Instituto Universitario de Tecnología de Administración Industrial | oct. 2023 - dic. 2025</p>
+                        <p class="education-note">Nota: en curso</p>
+                        <ul>
+                            <li>**Actividades y grupos:** equipos, web, analisis.</li>
+                        </ul>
+                        <p class="education-summary">Informático con experiencia práctica en el desarrollo de soluciones web y de escritorio y optimización proceso</p>
+                    </div>
+                    </div>
+            </section>
+
+            <section id="skills" class="section">
+                <div class="container">
+                    <h2>Habilidades Técnicas</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Desarrollo Web</h3>
+                            <ul>
+                                <li>HTML5, CSS3, JavaScript ES6+</li>
+                                <li>Frameworks Librerías React básico jQuery</li>
+                                <li>Backend (básico): PHP, Node.js</li>
+                                <li>Control de Versiones: Git, GitHub</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Bases de Datos</h3>
+                            <ul>
+                                <li>MySQL, PostgreSQL</li>
+                                <li>Diseño y Normalización de Bases de Datos</li>
+                                <li>Consultas SQL complejas</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Programación</h3>
+                            <ul>
+                                <li>Python Análisis de Datos </li>
+                                <li>Programación Orientada a Objetos</li>
+                                <li>C++ (Fundamentos)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Redes y Seguridad</h3>
+                            <ul>
+                                <li>Cisco Packet Tracer Simulación de Redes</li>
+                                <li>Conceptos de Redes (TCP/IP, VLANs, VPN)</li>
+                                <li>Ciberseguridad</li>
+                                <li>Linux básico de terminal</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Herramientas y Otros</h3>
+                            <ul>
+                                <li>Visual Studio Code, Eclipse</li>
+                                <li>Suite Microsoft Office (Word, Excel, PowerPoint)</li>
+                                <li>Análisis de Datos (Pandas, NumPy - Python)</li>
+                                <li>Solución de Problemas</li>
+                            </ul>
+                        </div>
+
+                            
+
+                            <!-- From Uiverse.io by Javierrocadev --> 
+<!-- From Uiverse.io by Javierrocadev --> 
+<!-- Se envuelve todo el componente de la tarjeta con una etiqueta <a> -->
+<a href="projects/juego en html/index.html" >
+    <div class="bg-sky-700 rounded-2xl shadow-sm shadow-sky-500">
+        <div class="group overflow-hidden relative after:duration-500 before:duration-500 duration-500 hover:after:duration-500 hover:after:translate-x-24 hover:before:translate-y-12 hover:before:-translate-x-32 hover:duration-500 after:absolute after:w-24 after:h-24 after:bg-sky-700 after:rounded-full after:blur-xl after:bottom-32 after:right-16 after:w-12 after:h-12 before:absolute before:w-20 before:h-20 before:bg-sky-400 before:rounded-full before:blur-xl before:top-20 before:right-16 before:w-12 before:h-12 hover:rotate-12 flex justify-center items-center h-56 w-80 origin-bottom-right bg-neutral-900 rounded-2xl outline outline-slate-400 -outline-offset-8">
+            <div class="z-10 flex flex-col items-center gap-2">
+                <span class="text-slate-400 text-6xl font-bold">JR</span>
+                <p class="text-gray-50">developer Extra</p>
+            </div>
+        </div>
+    </div>
+</a>
+</div>
+
+
+                            
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects-summary" class="section alternate-bg">
+                <div class="container">
+                    <h2>Un Vistazo a Mis Proyectos</h2>
+                    <p class="section-description">Estos son algunos de mis proyectos más relevantes que demuestran mi capacidad para transformar ideas en soluciones funcionales. Puedes ver los detalles en mi <a href="index.html#projects">portafolio principal</a>.</p>
+                    <div class="mini-projects-grid">
+                        <div class="mini-project-card">
+                            <h3>Plataforma E-commerce y Blog</h3>
+                            <p>Desarrollo web completo con HTML, CSS, JS para venta de tecnología y blog.</p>
+                            <a href="projects/pagina web de compra de tecnología servicios y blog/index.html" class="btn-small">Ver Más</a>
+                        </div>
+                        <div class="mini-project-card">
+                            <h3>Sitio Interactivo PHP/JS</h3>
+                            <p>Plataforma educativa para aprender PHP y JavaScript con ejemplos interactivos.</p>
+                            <a href="projects/codigo en php y javacrip/index.html" class="btn-small">Ver Más</a>
+                        </div>
+                        <div class="mini-project-card">
+                            <h3>Simulación de Red Segura</h3>
+                            <p>Diseño de red corporativa con VLANs y seguridad en Cisco Packet Tracer.</p>
+                            <a href="index.html#projects" class="btn-small">Ver Más</a>
+                        </div>
+                    </div>
+                    <a href="index.html#projects" class="btn view-all-projects-btn">Ver Todos los Proyectos en Portafolio Principal <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </section>
+
+             <section id="contact-detailed" class="section contact-section-page">
+                <div class="container">
+                    <h2>Mas De Mi</h2>
+                    <p class="section-description"> mas que un programador una vida.</p>
+                    
+
+                   <a 
+  href="html/mensiones.html" 
+  class="relative group flex flex-col items-center justify-center w-full h-full no-underline"
+  style="text-decoration: none;" >
+  <div
+    class="file relative w-60 h-40 cursor-pointer origin-bottom [perspective:1500px] z-50"
+  >
+    <div
+      class="work-5 bg-amber-600 w-full h-full origin-top rounded-2xl rounded-tl-none group-hover:shadow-[0_20px_40px_rgba(0,0,0,.2)] transition-all ease duration-300 relative after:absolute after:content-[''] after:bottom-[99%] after:left-0 after:w-20 after:h-4 after:bg-amber-600 after:rounded-t-2xl before:absolute before:content-[''] before:-top-[15px] before:left-[75.5px] before:w-4 before:h-4 before:bg-amber-600 before:[clip-path:polygon(0_35%,0%_100%,50%_100%);]"
+    ></div>
+    <div
+      class="work-4 absolute inset-1 bg-zinc-400 rounded-2xl transition-all ease duration-300 origin-bottom select-none group-hover:[transform:rotateX(-20deg)]"
+    ></div>
+    <div
+      class="work-3 absolute inset-1 bg-zinc-300 rounded-2xl transition-all ease duration-300 origin-bottom group-hover:[transform:rotateX(-30deg)]"
+    ></div>
+    <div
+      class="work-2 absolute inset-1 bg-zinc-200 rounded-2xl transition-all ease duration-300 origin-bottom group-hover:[transform:rotateX(-38deg)]"
+    ></div>
+    <div
+      class="work-1 absolute bottom-0 bg-gradient-to-t from-amber-500 to-amber-400 w-full h-[156px] rounded-2xl rounded-tr-none after:absolute after:content-[''] after:bottom-[99%] after:right-0 after:w-[146px] after:h-[16px] after:bg-amber-400 after:rounded-t-2xl before:absolute before:content-[''] before:-top-[10px] before:right-[142px] before:size-3 before:bg-amber-400 before:[clip-path:polygon(100%_14%,50%_100%,100%_100%);] transition-all ease duration-300 origin-bottom flex items-end group-hover:shadow-[inset_0_20px_40px_#fbbf24,_inset_0_-20px_40px_#d97706] group-hover:[transform:rotateX(-46deg)_translateY(1px)]"
+    ></div>
+  </div>
+  <p class="text-3xl pt-4 opacity-100 font-semibold text-gray-700 group-hover:text-amber-600 transition-colors duration-300">
+    Fotos
+  </p>
+</a>
+                
+    
+
+                        </div>
+    
+
+            <section id="contact-detailed" class="section contact-section-page">
+                <div class="container">
+                    <h2>Conéctate Conmigo</h2>
+                    <p class="section-description">Estoy disponible para nuevas oportunidades y colaboraciones. No dudes en contactarme.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method-card">
+                            <i class="fas fa-envelope icon-large"></i>
+                            <h3>Correo Electrónico</h3>
+                            <p>tu.correo@ejemplo.com</p>
+                            <a href="mailto:tu.correo@ejemplo.com" class="btn contact-btn">Enviar Correo</a>
+                        </div>
+                        <div class="contact-method-card">
+                            <i class="fab fa-whatsapp icon-large"></i>
+                            <h3>WhatsApp</h3>
+                            <p>+58 412 1393968</p>
+                            <a href="https://wa.me/+584121393968" target="_blank" class="btn contact-btn whatsapp-btn">Enviar Mensaje</a>
+                        </div>
+                        <div class="contact-method-card">
+                            <i class="fab fa-linkedin-in icon-large"></i>
+                            <h3>LinkedIn</h3>
+                            <p>Perfil Profesional</p>
+                            <a href="https://www.linkedin.com/in/alberto-brito-a88942135/" target="_blank" class="btn contact-btn linkedin-btn">Ver Perfil</a>
+                        </div>
+                        <div class="contact-method-card">
+                            <i class="fab fa-github icon-large"></i>
+                            <h3>GitHub</h3>
+                            <p>Mis Repositorios</p>
+                            <a href="https://github.com/Alberto14mil" target="_blank" class="btn contact-btn github-btn">Ver GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/alberto-brito-a88942135/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Alberto14mil" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/tuusuario" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p>&copy; 2025 Alberto Brito. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <button onclick="topFunction()" id="scrollTopBtn" title="Volver arriba">&#9650;</button>
+    </div>
+
+    <script src="js/script-pagina.js"></script>
+</body>
+</html>

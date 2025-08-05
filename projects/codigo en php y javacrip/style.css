@@ -1,0 +1,680 @@
+/* Variables CSS - Tema Claro (por defecto) */
+:root {
+    --primary-blue-light: #A7D9FD; /* Azul cielo suave */
+    --primary-blue-dark: #3F8BC0;  /* Azul académico, más profundo */
+    --accent-blue: #007bff;        /* Azul brillante para acentos */
+    --light-bg: #FFFFFF;           /* Fondo blanco puro */
+    --off-white-bg: #F8F9FA;       /* Fondo blanco roto para secciones */
+    --text-dark: #343A40;          /* Texto oscuro principal */
+    --text-medium: #6C757D;        /* Texto gris secundario */
+    --border-light: #DEE2E6;       /* Borde muy claro */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Sombra suave */
+    --code-font: 'Roboto Mono', monospace;
+    --heading-font: 'Montserrat', sans-serif;
+    --transition-speed: 0.3s ease-in-out;
+    --card-bg: var(--light-bg);
+    --footer-bg: var(--primary-blue-dark);
+    --footer-text: var(--light-bg);
+}
+
+/* Variables CSS - Tema Oscuro */
+body[data-theme='dark'] {
+    --primary-blue-light: #2c5d80; /* Azul oscuro más suave */
+    --primary-blue-dark: #7abaff;  /* Azul brillante para elementos principales */
+    --accent-blue: #00bcd4;        /* Cyan para acentos */
+    --light-bg: #1A1A2E;           /* Fondo oscuro */
+    --off-white-bg: #22223b;       /* Fondo ligeramente más claro para secciones */
+    --text-dark: #E0E0E0;          /* Texto claro principal */
+    --text-medium: #B0B0B0;        /* Texto gris claro secundario */
+    --border-light: #3A3A5B;       /* Borde oscuro */
+    --shadow-light: rgba(0, 0, 0, 0.4); /* Sombra más pronunciada en oscuro */
+    --card-bg: #2E2E4A;
+    --footer-bg: #1A1A2E;
+    --footer-text: #B0B0B0;
+}
+
+
+/* Reset básico y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--code-font);
+    line-height: 1.7;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed), color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-blue-dark);
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.2;
+    transition: color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+h1 { font-size: 3.8em; }
+h2 { font-size: 2.6em; }
+h3 { font-size: 1.8em; }
+
+a {
+    color: var(--primary-blue-dark);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--accent-blue);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-blue-dark);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    font-size: 1em;
+}
+
+.btn:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--shadow-light);
+}
+
+/* Encabezado Principal (Hero Section) */
+.hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-dark);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--off-white-bg) 100%);
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    font-size: 4.2em;
+    margin-bottom: 15px;
+    color: var(--primary-blue-dark);
+    text-shadow: 2px 2px 5px var(--shadow-light);
+}
+
+.hero-content p {
+    font-size: 1.4em;
+    margin-bottom: 45px;
+    color: var(--text-medium);
+    font-family: var(--heading-font);
+    font-weight: 400;
+    transition: color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+/* Overlay interactivo para el Hero (sutil) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--primary-blue-light) 0%, transparent 60%);
+    opacity: 0.4; /* Opacidad para que el color base se vea */
+    transition: transform 0.08s linear, background var(--transition-speed); /* Transición para el cambio de tema */
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Barra de Navegación */
+.navbar {
+    background-color: var(--light-bg);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Para alinear el botón de tema */
+}
+
+.navbar .nav-links li {
+    margin: 0 25px;
+}
+
+.navbar .nav-links a {
+    color: var(--text-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 8px;
+    font-family: var(--heading-font);
+    font-size: 0.95em;
+    transition: color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--accent-blue);
+    border-radius: 2px;
+    transition: width var(--transition-speed), background-color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.navbar .nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Botón de cambio de tema */
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.4em;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color var(--transition-speed), transform 0.2s ease-out; /* Transición para el cambio de tema */
+}
+
+.theme-toggle-btn:hover {
+    color: var(--accent-blue);
+    transform: scale(1.1);
+}
+
+/* Secciones de Contenido */
+.section {
+    padding: 90px 0;
+    margin-bottom: 50px;
+    background-color: var(--off-white-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+    border: 1px solid var(--border-light);
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out, background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section h2 {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 4px;
+    background-color: var(--accent-blue);
+    border-radius: 3px;
+    transition: background-color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+/* Grid de Características y Servicios */
+.feature-grid, .service-grid, .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.feature-item, .service-item, .portfolio-item {
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    text-align: center;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed), border-color var(--transition-speed); /* Transición para el cambio de tema */
+    box-shadow: 0 3px 10px var(--shadow-light);
+}
+
+.feature-item:hover, .service-item:hover, .portfolio-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 30px var(--shadow-light);
+}
+
+.feature-item h3, .service-item h3 {
+    font-size: 1.6em;
+    color: var(--primary-blue-dark);
+    margin-bottom: 15px;
+}
+
+.feature-item p, .service-item p, .portfolio-item p {
+    font-size: 1.05em;
+    color: var(--text-medium);
+    transition: color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+/* Portafolio */
+.portfolio-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.portfolio-item h3 {
+    font-size: 1.6em;
+    margin-bottom: 12px;
+}
+
+/* Formulario de Contacto */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    margin: 0 auto;
+    gap: 22px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    font-size: 1.05em;
+    font-family: var(--code-font);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-medium);
+    transition: color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--primary-blue-light); /* Utiliza la versión clara del azul para el foco */
+}
+
+.contact-form button {
+    align-self: flex-start;
+}
+
+/* Pie de Página */
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 35px 0;
+    margin-top: 60px;
+    border-top: 1px solid var(--accent-blue);
+    font-size: 0.95em;
+    transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed); /* Transición para el cambio de tema */
+}
+
+.footer p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Splash Screen y Animación de Código --- */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light-bg); /* Hereda del tema */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-out, background-color var(--transition-speed);
+    overflow: hidden; /* Oculta cualquier desbordamiento durante la animación */
+}
+
+.splash-screen.fade-out {
+    opacity: 0;
+}
+
+.code-animation {
+    font-family: var(--code-font);
+    font-size: 1.3em;
+    color: var(--primary-blue-dark); /* Color del código que escribe */
+    white-space: pre; /* Mantiene los espacios y saltos de línea del HTML */
+    line-height: 1.6;
+    text-align: left;
+    max-width: 90%;
+}
+
+.code-animation span {
+    display: block; /* Cada línea se muestra en su propia línea */
+    overflow: hidden; /* Esconde el texto hasta que el JS lo "escribe" */
+    visibility: hidden; /* Oculto por defecto */
+}
+
+.code-animation .indent {
+    margin-left: 2em; /* Indentación básica */
+}
+
+.code-animation .indent-2 {
+    margin-left: 4em; /* Indentación doble */
+}
+
+.code-animation .cursor {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 2px;
+    animation: none; /* Se activa con JS */
+    color: var(--accent-blue);
+}
+
+@keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+
+/* Media Queries para Responsive Design (Generales) */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.3em;
+    }
+
+    .section h2 {
+        font-size: 2.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar .nav-links li {
+        margin: 0;
+    }
+    .navbar .nav-links li:last-child { /* Ajusta el margen del botón de tema */
+        margin-top: 10px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .feature-grid, .service-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+    .code-animation {
+        font-size: 1em; /* Más pequeño en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+
+    .hero-content p {
+        font-size: 0.95em;
+    }
+
+    .section h2 {
+        font-size: 1.8em;
+    }
+}
+
+/* --- Estilos específicos para la página del comparador --- */
+
+.page-content {
+    padding-top: 50px; /* Espacio para el navbar fijo */
+}
+
+.navbar .nav-links .spacer {
+    flex-grow: 1; /* Empuja el botón de tema a la derecha */
+}
+
+.intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    font-size: 1.15em;
+    color: var(--text-medium);
+    font-family: var(--heading-font);
+}
+
+.task-selector-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.task-dropdown {
+    padding: 10px 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    font-family: var(--code-font);
+    font-size: 1em;
+    cursor: pointer;
+    transition: border-color var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.task-dropdown:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--primary-blue-light);
+}
+
+.task-selector-container label {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-right: 15px;
+    font-size: 1.1em;
+    transition: color var(--transition-speed);
+}
+
+
+.code-comparator-task {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    text-align: center;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.code-comparator-task h3 {
+    font-size: 2em;
+    color: var(--primary-blue-dark);
+    margin-bottom: 15px;
+}
+
+.code-comparator-task p {
+    font-family: var(--code-font);
+    font-size: 1.1em;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.code-comparator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+    gap: 30px;
+}
+
+.code-block {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light); /* Borde por defecto, que cambiará con el tema */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    overflow: hidden; /* Asegura que el pre no se desborde */
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* Borde para el tema claro (día) */
+body[data-theme='light'] .code-block {
+    border-color: #000000; /* Borde negro para tema claro */
+}
+
+/* Borde para el tema oscuro (noche) */
+body[data-theme='dark'] .code-block {
+    border-color: #FFFFFF; /* Borde blanco para tema oscuro */
+}
+
+
+.code-header {
+    background-color: var(--off-white-bg);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.code-header h3 {
+    margin: 0;
+    font-size: 1.4em;
+    color: var(--primary-blue-dark);
+    text-align: left; /* Alinea el título a la izquierda */
+}
+
+.language-tag {
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color var(--transition-speed);
+}
+
+.code-block pre {
+    padding: 20px;
+    overflow-x: auto; /* Permite scroll horizontal si el código es muy largo */
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: var(--text-dark); /* Color base del texto del código */
+}
+
+.code-block code {
+    /* Estilos para simular el resaltado de sintaxis */
+    font-family: var(--code-font);
+}
+
+/* Colores de sintaxis simulados */
+.code-block .keyword { color: #007bff; } /* Azul claro para palabras clave */
+body[data-theme='dark'] .code-block .keyword { color: #00bcd4; } /* Cyan en tema oscuro */
+
+.code-block .comment { color: #6C757D; font-style: italic; } /* Gris para comentarios */
+body[data-theme='dark'] .code-block .comment { color: #B0B0B0; }
+
+.code-block .string { color: #28A745; } /* Verde para cadenas */
+body[data-theme='dark'] .code-block .string { color: #90ee90; }
+
+.code-block .number { color: #DC3545; } /* Rojo para números */
+body[data-theme='dark'] .code-block .number { color: #ff6347; }
+
+.code-block .variable { color: #FD7E14; } /* Naranja para variables */
+body[data-theme='dark'] .code-block .variable { color: #ffa500; }
+
+.code-block .function-name { color: #6F42C1; font-weight: bold; } /* Púrpura para nombres de función */
+body[data-theme='dark'] .code-block .function-name { color: #da70d6; }
+
+.code-block .method { color: #007bff; } /* Azul para métodos */
+body[data-theme='dark'] .code-block .method { color: #87ceeb; }
+
+
+/* Media Queries para el comparador (Específicos) */
+@media (max-width: 768px) {
+    .code-comparator-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+    .code-comparator-task h3 {
+        font-size: 1.6em;
+    }
+    .code-comparator-task p {
+        font-size: 1em;
+    }
+    .code-block pre {
+        font-size: 0.85em;
+    }
+    .task-selector-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .task-selector-container label {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alberto Brito - Portafolio TSU Informática</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/pdf-viewer.css">
+    <link rel="stylesheet" href="css/estilos.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+
+    
+    <div id="intro-screen">
+        <div class="intro-content">
+            <h1>Bienvenido a mi Portafolio</h1>
+            <p>Descubre mis proyectos, habilidades y trayectoria como TSU en Informática.</p>
+            <button id="enter-portfolio-btn" class="btn">Ver Portafolio</button>
+        </div>
+    </div>
+
+    <div id="portfolio-content" class="hidden"> 
+        <header class="header">
+            <div class="container navbar">
+                <a href="pagina.html" class="logo">Alberto.dev</a>
+                <nav>
+                    <ul class="nav-list">
+                        <li><a href="#about">Sobre Mí</a></li>
+                        <li><a href="#projects">Proyectos</a></li>
+                        <li><a href="#courses">Cursos</a></li>
+                        <li><a href="#studies">Estudios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="theme-switcher">
+            <button id="light-theme-btn" class="theme-btn active" title="Tema Claro"><i class="fas fa-sun"></i></button>
+            <button id="dark-theme-btn" class="theme-btn" title="Tema Oscuro"><i class="fas fa-moon"></i></button>
+            <button id="cs-theme-btn" class="theme-btn" title="Tema Informático"><i class="fas fa-graduation-cap"></i></button>
+        </div>
+
+
+        <main>
+            <section id="hero" class="hero">
+                <div class="hero-content">
+                    <h1>Hola, soy /-Alberto Antonio Brito Mujica-/</h1>
+                    <p>Estudiante de TSU en Informática con pasión por desarrollo web, ciberseguridad, análisis de datos, y un enfoque que busque soluciones innovadoras para todo ámbito profesional.</p>
+                    <a href="#projects" class="btn">Explora mis Proyectos</a>
+                </div>
+            </section>
+
+            <section id="about" class="section">
+                <div class="container">
+                    <h2>Sobre Mí</h2>
+                    <div class="about-content">
+                        <div class="about-image">
+                            <img src="images/tu_foto.jpg" alt="Tu Foto de Perfil">
+                        </div>
+                        <div class="about-text">
+                            <h3>Mi Trayectoria y Visión</h3>
+                            <p>Soy un TSU en Informática en formación, con una sólida base en programación orientada a objetos, bases de datos relacionales y redes. Mi objetivo es aplicar mis conocimientos para desarrollar **soluciones tecnológicas innovadoras** que generen un impacto real.</p>
+                            <p>Me considero un aprendiz constante y un solucionador de problemas nato, siempre buscando eficientizar procesos y transformar ideas en código funcional. Estoy especialmente interesado en el desarrollo de aplicaciones web escalables y la automatización de procesos.</p>
+                            <p>A lo largo de mi carrera técnica, he cultivado una mentalidad proactiva y emprendedora, listo para afrontar desafíos y colaborar en proyectos que requieran creatividad y compromiso.</p>
+                            
+                            <div class="cv-options" style="margin-top: 25px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                                <a href="docs/alberto sistesis curruclar ALBERTO  BRITO.pdf" target="_blank" class="btn" style="background-color: var(--primary-color);">
+                                    <i class="fas fa-eye"></i> Ver CV
+                                </a>
+                                <a href="docs/alberto sistesis curruclar ALBERTO  BRITO.pdf" download class="btn" style="background-color: var(--secondary-color);">
+                                    <i class="fas fa-download"></i> Descargar CV
+                                </a>
+                            </div>
+                            
+            <!-- From Uiverse.io by vinodjangid07 --> 
+                            <div class="loader">
+    <div class="truckWrapper">
+    <div class="truckBody">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 198 93"
+        class="trucksvg"
+        >
+        <path
+            stroke-width="3"
+            stroke="#282828"
+            fill="#F83D3D"
+            d="M135 22.5H177.264C178.295 22.5 179.22 23.133 179.594 24.0939L192.33 56.8443C192.442 57.1332 192.5 57.4404 192.5 57.7504V89C192.5 90.3807 191.381 91.5 190 91.5H135C133.619 91.5 132.5 90.3807 132.5 89V25C132.5 23.6193 133.619 22.5 135 22.5Z"
+        ></path>
+        <path
+            stroke-width="3"
+            stroke="#282828"
+            fill="#7D7C7C"
+            d="M146 33.5H181.741C182.779 33.5 183.709 34.1415 184.078 35.112L190.538 52.112C191.16 53.748 189.951 55.5 188.201 55.5H146C144.619 55.5 143.5 54.3807 143.5 53V36C143.5 34.6193 144.619 33.5 146 33.5Z"
+        ></path>
+        <path
+            stroke-width="2"
+            stroke="#282828"
+            fill="#282828"
+            d="M150 65C150 65.39 149.763 65.8656 149.127 66.2893C148.499 66.7083 147.573 67 146.5 67C145.427 67 144.501 66.7083 143.873 66.2893C143.237 65.8656 143 65.39 143 65C143 64.61 143.237 64.1344 143.873 63.7107C144.501 63.2917 145.427 63 146.5 63C147.573 63 148.499 63.2917 149.127 63.7107C149.763 64.1344 150 64.61 150 65Z"
+        ></path>
+        <rect
+            stroke-width="2"
+            stroke="#282828"
+            fill="#FFFCAB"
+            rx="1"
+            height="7"
+            width="5"
+            y="63"
+            x="187"
+        ></rect>
+        <rect
+            stroke-width="2"
+            stroke="#282828"
+            fill="#282828"
+            rx="1"
+            height="11"
+            width="4"
+            y="81"
+            x="193"
+        ></rect>
+        <rect
+            stroke-width="3"
+            stroke="#282828"
+            fill="#DFDFDF"
+            rx="2.5"
+            height="90"
+            width="121"
+        y="1.5"
+        x="6.5"
+        ></rect>
+        <rect
+        stroke-width="2"
+        stroke="#282828"
+        fill="#DFDFDF"
+        rx="2"
+        height="4"
+        width="6"
+        y="84"
+        x="1"
+        ></rect>
+        </svg>
+        </div>
+        <div class="truckTires">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 30 30"
+        class="tiresvg"
+        >
+        <circle
+        stroke-width="3"
+        stroke="#282828"
+        fill="#282828"
+        r="13.5"
+        cy="15"
+        cx="15"
+        ></circle>
+        <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+        </svg>
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 30 30"
+        class="tiresvg"
+        >
+            <circle
+            stroke-width="3"
+            stroke="#282828"
+            fill="#282828"
+            r="13.5"
+            cy="15"
+            cx="15"
+        ></circle>
+        <circle fill="#DFDFDF" r="7" cy="15" cx="15"></circle>
+        </svg>
+        </div>
+        <div class="road"></div>
+
+        <svg
+        xml:space="preserve"
+        viewBox="0 0 453.459 453.459"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns="http://www.w3.org/2000/svg"
+        id="Capa_1"
+        version="1.1"
+        fill="#000000"
+        class="lampPost"
+        >
+        <path
+        d="M252.882,0c-37.781,0-68.686,29.953-70.245,67.358h-6.917v8.954c-26.109,2.163-45.463,10.011-45.463,19.366h9.993
+c-1.65,5.146-2.507,10.54-2.507,16.017c0,28.956,23.558,52.514,52.514,52.514c28.956,0,52.514-23.558,52.514-52.514
+c0-5.478-0.856-10.872-2.506-16.017h9.992c0-9.354-19.352-17.204-45.463-19.366v-8.954h-6.149C200.189,38.779,223.924,16,252.882,16
+c29.952,0,54.32,24.368,54.32,54.32c0,28.774-11.078,37.009-25.105,47.437c-17.444,12.968-37.216,27.667-37.216,78.884v113.914
+h-0.797c-5.068,0-9.174,4.108-9.174,9.177c0,2.844,1.293,5.383,3.321,7.066c-3.432,27.933-26.851,95.744-8.226,115.459v11.202h45.75
+v-11.202c18.625-19.715-4.794-87.527-8.227-115.459c2.029-1.683,3.322-4.223,3.322-7.066c0-5.068-4.107-9.177-9.176-9.177h-0.795
+V196.641c0-43.174,14.942-54.283,30.762-66.043c14.793-10.997,31.559-23.461,31.559-60.277C323.202,31.545,291.656,0,252.882,0z
+M232.77,111.694c0,23.442-19.071,42.514-42.514,42.514c-23.442,0-42.514-19.072-42.514-42.514c0-5.531,1.078-10.957,3.141-16.017
+h78.747C231.693,100.736,232.77,106.162,232.77,111.694z"
+        ></path>
+        </svg>
+    </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <div class="container">
+                    <h2>Proyectos Destacados</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <img src="images/E-COMER.bmp" alt="Proyecto de Compras en Línea">
+                            <div class="project-info">
+                                <h3>Plataforma de E-commerce y Blog de Tecnología</h3>
+                                <p>Desarrollo de una página web completa para compra y venta de tecnología y servicios en línea, incluyendo un módulo de blog para noticias y artículos relacionados con el sector. Implementada con HTML, CSS, JavaScript y simulación de funcionalidades de backend.</p>
+                                <div class="project-tags">
+                                    <span>#HTML</span>
+                                    <span>#CSS</span>
+                                    <span>#JavaScript</span>
+                                    <span>#E-commerce</span>
+                                    <span>#Blog</span>
+                                </div>
+                                <a href="projects/pagina web de compra de tecnología servicios y blog/index.html" class="btn" style="margin-top: 20px; font-size: 0.9em; padding: 10px 20px;">Ver Proyecto</a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img src="images/IMG_20211127_111954.jpg" alt="Proyecto de Aprendizaje Web">
+                            <div class="project-info">
+                                <h3>Sitio Web Interactivo para Aprender PHP y JavaScript</h3>
+                                <p>Creación de una plataforma educativa donde los usuarios pueden explorar y comprender funciones clave de PHP y JavaScript a través de ejemplos de código interactivos y explicaciones detalladas. Enfocado en la visualización del código.</p>
+                                <div class="project-tags">
+                                    <span>#HTML</span>
+                                    <span>#CSS</span>
+                                    <span>#JavaScript</span>
+                                    <span>#PHP</span>
+                                    <span>#Educación</span>
+                                </div>
+                                <a href="projects/codigo en php y javacrip/index.html" class="btn" style="margin-top: 20px; font-size: 0.9em; padding: 10px 20px;">Ver Proyecto</a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <img src="images/proyecto3.jpg" alt="Proyecto de Redes">
+                            <div class="project-info">
+                                <h3>Simulación de Red Corporativa Segura</h3>
+                                <p>Diseño e implementación virtual de una red corporativa utilizando Cisco Packet Tracer, con configuración de VLANs, VPN y políticas de seguridad básicas.</p>
+                                <div class="project-tags">
+                                    <span>#CiscoPacketTracer</span>
+                                    <span>#Redes</span>
+                                    <span>#Seguridad</span>
+                                    <span>#VLAN</span>
+                                </div>
+                                <a href="projects/proyecto3.html" class="btn" style="margin-top: 20px; font-size: 0.9em; padding: 10px 20px;">Ver Proyecto</a>
+                            </div>
+                            
+                
+
+
+                        </div>
+
+                        <div class="project-card">
+                            <img src="images/EVA.bmp" alt="Proyecto de Evaluación de Desempeño">
+                            <div class="project-info">
+                                <h3>Sistema de Evaluación de Desempeño</h3>
+                                <p>Desarrollo de una herramienta web para la gestión y evaluación del desempeño de personal, incluyendo métricas y reportes personalizables. Enfocado en la optimización de recursos humanos.</p>
+                                <div class="project-tags">
+                                    <span>#WebDevelopment</span>
+                                    <span>#HumanResources</span>
+                                    <span>#Database</span>
+                                    <span>#Reporting</span>
+                                </div>
+                                <a href="projects/pagina de evaluacion de desempeño/index.html" class="btn" style="margin-top: 20px; font-size: 0.9em; padding: 10px 20px;">Ver Proyecto</a>
+                            </div>
+                        </div>
+                            </div>
+
+
+
+                            
+                    </div>
+                </div>
+            </section>
+
+            <section id="courses" class="section">
+                <div class="container">
+                    <h2>Cursos y Certificaciones</h2>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <h3>Programación en Python para Análisis de Datos</h3>
+                            <p class="institution">Coursera / Google</p>
+                            <p>Fundamentos de Python, librerías (Pandas, NumPy, Matplotlib) y aplicaciones en ciencia de datos.</p>
+                            <a href="docs/certificado_python.pdf" target="_blank" class="btn" style="margin-top: 15px; font-size: 0.8em; padding: 8px 15px;">Ver Certificado</a>
+                        </div>
+
+                        <div class="course-card">
+                            <h3>Desarrollo Web Full Stack (Introducción)</h3>
+                            <p class="institution">Udemy</p>
+                            <p>HTML5, CSS3, JavaScript, Node.js y MongoDB. Creación de APIs RESTful básicas.</p>
+                            <a href="docs/certificado_fullstack.pdf" target="_blank" class="btn" style="margin-top: 15px; font-size: 0.8em; padding: 8px 15px;">Ver Certificado</a>
+                        </div>
+
+                        <div class="course-card">
+                            <h3>Fundamentos de Ciberseguridad</h3>
+                            <p class="institution">Cisco Networking Academy</p>
+                            <p>Conceptos clave de seguridad de la información, amenazas comunes y principios de protección.</p>
+                            <a href="docs/certificado_ciberseguridad.pdf" target="_blank" class="btn" style="margin-top: 15px; font-size: 0.8em; padding: 8px 15px;">Ver Certificado</a>
+                        </div>
+                        </div>
+                </div>
+            </section>
+
+            <section id="studies" class="section">
+                <div class="container">
+                    <h2>Mi Trayectoria Académica</h2>
+                    <div class="studies-content">
+                        <h3>Tecnólogo Superior Universitario en Informática</h3>
+                        <ul>
+                            <li>Institución:Educación Instituto Universitario de Tecnología de Administración Industrial IUTA, [MARACAY, VENEZUELA]</li>
+                            <li>Período:2023 finalizado este diciembre 2025]</li>
+                            <li>Áreas de Especialización:** Desarrollo de Software, Gestión de Bases de Datos, Redes y Telecomunicaciones, Seguridad Informática, Análisis de Sistemas.</li>
+                            <li>Logros Destacados:Egresado del INCES en 2017, donde me distinguí como uno de los estudiantes más sobresalientes en la rama de Asistencia Administrativa y de mi actual promocion de TSU.</li>
+                        </ul>
+
+                        <div class="teg-info">
+                            <h4>Trabajo Especial de Grado (TEG)</h4>
+                            <p>Mi Trabajo Especial de Grado se titula: "DISEÑO DE UN SISTEMA WEB PARA LA GESTIÓN DE TICKETS DE SOPORTE HELP DESK EN LA EMPRESA INVERSIONES SELVA, UBICADA EN MARACAY ESTADO ARAGUA".</p>
+                            <p>En este proyecto, investigué y desarrollé una solución de software para automatizar y gestionar eficientemente las solicitudes de soporte técnico, mejorando los tiempos de respuesta y la satisfacción del usuario. Fue implementado utilizando tecnologías clave, ej. PHP, MySQL, JavaScript .</p>
+                            <p>Fue una experiencia fundamental para aplicar mis conocimientos en diseño de bases de datos, desarrollo full-stack y gestión de procesos empresariales y desarrollar una solución real a un problema concreto.</p>
+                            
+                            <div class="teg-options" style="margin-top: 25px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                                <a href="docs/I6SA BRITO ALBERTO 26734609 Diseño de un sistema de tickets.pdf" target="_blank" class="btn" style="background-color: var(--primary-color);">
+                                    <i class="fas fa-eye"></i> Ver TEG
+                                </a>
+                                <a href="docs/I6SA BRITO ALBERTO 26734609 Diseño de un sistema de tickets.pdf" download class="btn" style="background-color: var(--accent-color);">
+                                    <i class="fas fa-download"></i> Descargar TEG
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section" style="background-color: var(--background-dark); color: var(--text-light);">
+                <div class="container">
+                    <h2>Contáctame</h2>
+                    <p style="color: var(--text-light); font-size: 1.2em; margin-bottom: 40px;">¿Tienes un proyecto en mente o quieres colaborar? ¡Hablemos!</p>
+                    <div class="contact-links">
+                        <a href="mailto:tu.correo@ejemplo.com" class="btn" style="background-color: var(--primary-color); margin: 10px;">
+                            <i class="fas fa-envelope"></i> Enviar Correo
+                        </a>
+                        <a href="https://wa.me/+584121393968" target="_blank" class="btn" style="background-color: #25d366; margin: 10px;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://www.linkedin.com/in/alberto-brito-a88942135/" target="_blank" class="btn" style="background-color: #0077b5; margin: 10px;">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/Alberto14mil" target="_blank" class="btn" style="background-color: #333; margin: 10px;">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+            </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/alberto-brito-a88942135/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Alberto14mil" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/tuusuario" target="_blank" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                    </div>
+                <p>&copy; 2025 Alberto Brito. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <button onclick="topFunction()" id="scrollTopBtn" title="Volver arriba">&#9650;</button>
+
+    </div> <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="js/pdf-viewer.js"></script>
+</body>
+</html>

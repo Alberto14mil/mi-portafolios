@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter - El Ataque Cósmico</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzrRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBgGFA56O9IdhPqG6QHmuP+zgG9JIQA5" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Menú del Juego</h3>
+            <button id="closeSidebar" class="close-sidebar-btn" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" id="restartGameBtn"><i class="fas fa-redo-alt"></i> Reiniciar Juego</a></li>
+            <li><a href="../../index.html">Volver al portafolio</a></li>
+            <li><a href="../juego en html/index.html"><i class="fas fa-arrow-left"></i>Evitando Asteroides</a></li>
+            <li><a href="../esnak moderno/index.html">Snake Moderno</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 Tu Nombre</p>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="game-container" id="gameContainer">
+        <div class="game-title-area">
+            <h1>SPACE SHOOTER</h1>
+            <p id="gameMessage">Presiona ENTER o haz click para empezar</p>
+            <button id="startButton" class="game-button">¡Iniciar Juego!</button>
+        </div>
+        <div class="game-content-area">
+            <div class="stats">
+                <p>Puntuación: <span id="score">0</span></p>
+                <p>Vidas: <span id="lives">3</span></p>
+            </div>
+            <canvas id="gameCanvas" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Lógica de la barra lateral (integrada aquí para simplificar)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const closeSidebarBtn = document.getElementById('closeSidebar');
+            const overlay = document.getElementById('overlay');
+            const restartGameBtn = document.getElementById('restartGameBtn');
+            // No se necesita un "back-button" genérico si los enlaces son específicos a otros juegos
+            // Manteniendo los enlaces de juego proporcionados por el usuario
+
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+            });
+
+            closeSidebarBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // Evento para reiniciar el juego desde el menú lateral
+            if (restartGameBtn) {
+                restartGameBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // 'typeof restartGame === 'function'' asegura que la función exista antes de llamarla
+                    if (typeof restartGame === 'function') {
+                        restartGame(); // Llama a la función global restartGame del script del juego
+                        sidebar.classList.remove('active'); // Cierra la barra lateral
+                        overlay.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

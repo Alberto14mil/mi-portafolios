@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Solutions - Blog de Tecnología</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/876/876118.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>TechNova Solutions</h1>
+                <p>Innovación a tu alcance</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="productos.html" class="nav-link">Productos</a></li>
+                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn btn-secondary" id="loginButton">Ingresar</a>
+                <a href="registro.html" class="btn btn-primary" id="registerButton">Registro</a>
+
+                <span id="welcomeMessage" style="display: none; color: white; font-weight: 600; margin-right: 15px;"></span>
+                <button id="logoutButton" class="btn btn-primary" style="display: none;">Cerrar Sesión</button>
+
+
+            </div>
+        </div>
+    </header>
+
+    <main class="blog-page">
+        <section class="hero-section blog-hero">
+            <div class="container hero-content">
+                <h2>Blog de Tecnología</h2>
+                <p>Noticias, tutoriales y análisis sobre las últimas tendencias en innovación y desarrollo.</p>
+            </div>
+        </section>
+
+        <section class="blog-posts-section">
+            <div class="container">
+                <div class="blog-grid">
+                    <article class="blog-post-card">
+                        <img src="./imagenes/blog/images1.jpg" alt="Inteligencia Artificial" class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Inteligencia Artificial</span>
+                            <h3 class="post-title">El Auge de la IA Generativa: Más Allá de ChatGPT</h3>
+                            <p class="post-excerpt">Explora cómo la IA generativa está transformando industrias, desde la creación de arte hasta el desarrollo de software. Analizamos sus implicaciones y el futuro.</p>
+                            <div class="post-meta">
+                                <span class="author"><i class="fas fa-user"></i> Ana Robles</span>
+                                <span class="date"><i class="fas fa-calendar-alt"></i> 10 de Julio, 2025</span>
+                            </div>
+                            <a href="#post-ia-generativa" class="btn btn-primary btn-small">Leer Más</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post-card">
+                        <img src="./imagenes/blog/images2.jpg" alt="Ciberseguridad" class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Ciberseguridad</span>
+                            <h3 class="post-title">Protegiendo tu Huella Digital: Guía Completa de Ciberseguridad</h3>
+                            <p class="post-excerpt">Descubre las mejores prácticas para proteger tu información personal y empresarial en un mundo digital cada vez más vulnerable a los ataques cibernéticos.</p>
+                            <div class="post-meta">
+                                <span class="author"><i class="fas fa-user"></i> Luis Méndez</span>
+                                <span class="date"><i class="fas fa-calendar-alt"></i> 05 de Julio, 2025</span>
+                            </div>
+                            <a href="#post-ciberseguridad" class="btn btn-primary btn-small">Leer Más</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-post-card">
+                        <img src="./imagenes/blog/collage-fondo-programacion-768x513.jpg" alt="Desarrollo Web" class="post-image">
+                        <div class="post-content">
+                            <span class="post-category">Desarrollo Web</span>
+                            <h3 class="post-title">Frameworks de JavaScript: ¿Cuál elegir en 2025?</h3>
+                            <p class="post-excerpt">Un análisis comparativo de los frameworks más populares como React, Vue y Angular, y cuál es el más adecuado para tus proyectos de desarrollo web.</p>
+                            <div class="post-meta">
+                                <span class="author"><i class="fas fa-user"></i> Carla Pérez</span>
+                                <span class="date"><i class="fas fa-calendar-alt"></i> 01 de Julio, 2025</span>
+                            </div>
+                            <a href="#post-js-frameworks" class="btn btn-primary btn-small">Leer Más</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-detail-section" id="post-ia-generativa">
+            <div class="container">
+                <article class="post-full-content">
+                    <h2>El Auge de la IA Generativa: Más Allá de ChatGPT</h2>
+                    <div class="post-meta-detail">
+                        <span class="author"><i class="fas fa-user"></i> Por Ana Robles</span>
+                        <span class="date"><i class="fas fa-calendar-alt"></i> 10 de Julio, 2025</span>
+                        <span class="category"><i class="fas fa-tag"></i> Inteligencia Artificial</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Inteligencia Artificial Generativa" class="full-post-image">
+                    <p>La Inteligencia Artificial Generativa, con modelos como GPT-4, DALL-E y Midjourney, ha irrumpido en la escena tecnológica con una fuerza sin precedentes. Lo que antes era ciencia ficción, ahora es una realidad tangible: máquinas capaces de crear texto, imágenes, música y código que indistinguibles del trabajo humano.</p>
+                    <p>Estos modelos, basados en redes neuronales profundas y entrenados con vastas cantidades de datos, están redefiniendo los límites de la creatividad y la automatización. Desde la redacción de artículos periodísticos y guiones, hasta la generación de diseños gráficos y composiciones musicales originales, las aplicaciones son casi ilimitadas.</p>
+                    <h3>Impacto en Diversas Industrias</h3>
+                    <ul>
+                        <li><strong>Marketing y Publicidad:</strong> Creación rápida de contenido persuasivo y personalizable.</li>
+                        <li><strong>Diseño Gráfico y Web:</strong> Generación automática de assets visuales, maquetas y prototipos.</li>
+                        <li><strong>Desarrollo de Software:</strong> Asistencia en la codificación, depuración y generación de pruebas.</li>
+                        <li><strong>Educación:</strong> Herramientas para generar material didáctico y personalización del aprendizaje.</li>
+                        <li><strong>Salud:</strong> Diseño de nuevas moléculas y compuestos para investigación farmacéutica.</li>
+                    </ul>
+                    <p>Sin embargo, el auge de la IA generativa también plantea importantes desafíos. La ética, la propiedad intelectual y el riesgo de desinformación son temas cruciales que requieren un debate y una regulación cuidadosos. A medida que la tecnología avanza, es imperativo que las sociedades desarrollen marcos que garanticen un uso responsable y beneficioso para todos.</p>
+                    <p>El futuro de la IA generativa es prometedor, pero su verdadero potencial se desbloqueará cuando se combine con la supervisión y la creatividad humanas, trabajando en sinergia para resolver problemas complejos y crear un mundo más innovador.</p>
+
+                    <div class="comments-section">
+                        <h3>Comentarios (<span id="comment-count">0</span>)</h3>
+                        <div class="comment-form" id="commentFormContainer">
+                            <h4>Deja un Comentario</h4>
+                            <form id="commentForm">
+                                <div class="form-group">
+                                    <label for="comment-name">Tu Nombre</label>
+                                    <input type="text" id="comment-name" placeholder="Ej: Juan Pérez" required disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment-email">Tu Correo Electrónico</label>
+                                    <input type="email" id="comment-email" placeholder="ejemplo@dominio.com" required disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment-text">Tu Comentario</label>
+                                    <textarea id="comment-text" rows="5" placeholder="Escribe tu comentario aquí..." required disabled></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submitCommentButton" disabled>Enviar Comentario</button>
+                                <p id="commentLoginMessage" style="color: #007bff; margin-top: 10px;">Inicia sesión para poder comentar.</p>
+                            </form>
+                        </div>
+
+                        <div class="comment-list" id="commentList">
+                            </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="certifications-faq-section">
+            <div class="container">
+                <div class="section-column">
+                    <h2>Certificaciones Destacadas</h2>
+                    <div class="certification-item">
+                        <i class="fas fa-award icon-large"></i>
+                        <h3>Desarrollo Full-Stack con MERN</h3>
+                        <p>Certificación de TechNova Solutions. Domina MongoDB, Express, React y Node.js para crear aplicaciones web robustas.</p>
+                        <a href="productos.html?category=cursos-programacion" class="btn btn-secondary btn-small">Ver Curso</a>
+                    </div>
+                    <div class="certification-item">
+                        <i class="fas fa-shield-alt icon-large"></i>
+                        <h3>Especialista en Ciberseguridad Ofensiva</h3>
+                        <p>Aprende técnicas de hacking ético y defensa digital para proteger sistemas de información.</p>
+                        <a href="productos.html?category=cursos-programacion" class="btn btn-secondary btn-small">Ver Curso</a>
+                    </div>
+                </div>
+
+                <div class="section-column">
+                    <h2>Preguntas Frecuentes (FAQ)</h2>
+                    <div class="faq-item">
+                        <h3 class="faq-question">¿Cómo puedo obtener una certificación de TechNova Solutions? <i class="fas fa-chevron-down toggle-icon"></i></h3>
+                        <div class="faq-answer">
+                            <p>Para obtener una certificación, debes completar satisfactoriamente uno de nuestros cursos certificados y aprobar el examen final. Una vez aprobado, tu certificado digital estará disponible para descarga en tu perfil de usuario.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">¿Los cursos tienen soporte técnico? <i class="fas fa-chevron-down toggle-icon"></i></h3>
+                        <div class="faq-answer">
+                            <p>Sí, todos nuestros cursos incluyen soporte técnico dedicado a través de nuestra plataforma de e-learning, donde podrás interactuar con instructores y compañeros para resolver dudas y problemas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">¿Puedo acceder al material del curso después de finalizarlo? <i class="fas fa-chevron-down toggle-icon"></i></h3>
+                        <div class="faq-answer">
+                            <p>¡Absolutamente! Una vez que te inscribes en un curso, tendrás acceso de por vida a todo el material, incluyendo actualizaciones futuras, sin costo adicional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-section about">
+                <h3>Sobre TechNova Solutions</h3>
+                <p>Tu aliado en tecnología. Ofrecemos las mejores soluciones de software, seguridad y capacitación para que siempre estés a la vanguardia.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in fa-2x" style="color: white;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TechNova Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+ <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-cart-modal">&times;</span>
+            <h2>Tu Carrito</h2>
+            <ul id="cart-items-modal">
+                </ul>
+            <div class="modal-total">
+                <strong>Total:</strong> $<span id="cart-total-modal">0.00</span>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="clear-cart-modal">Vaciar Carrito</button>
+                <button class="btn btn-primary" id="checkout-button-modal">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.toggle-icon');
+
+                    // Close other open FAQs
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== this) {
+                            otherQuestion.classList.remove('active');
+                            otherQuestion.nextElementSibling.style.maxHeight = null;
+                            otherQuestion.querySelector('.toggle-icon').classList.remove('fa-chevron-up');
+                            otherQuestion.querySelector('.toggle-icon').classList.add('fa-chevron-down');
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    this.classList.toggle('active');
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+
+            // Comment functionality
+            const commentForm = document.getElementById('commentForm');
+            const commentNameInput = document.getElementById('comment-name');
+            const commentEmailInput = document.getElementById('comment-email');
+            const commentTextInput = document.getElementById('comment-text');
+            const submitCommentButton = document.getElementById('submitCommentButton');
+            const commentList = document.getElementById('commentList');
+            const commentCountSpan = document.getElementById('comment-count');
+            const commentLoginMessage = document.getElementById('commentLoginMessage');
+
+            let comments = JSON.parse(localStorage.getItem('blogComments')) || [];
+
+            function updateCommentCount() {
+                commentCountSpan.textContent = comments.length;
+            }
+
+            function saveComments() {
+                localStorage.setItem('blogComments', JSON.stringify(comments));
+            }
+
+            function renderComments() {
+                commentList.innerHTML = '';
+                const loggedInUser = localStorage.getItem('loggedInUser');
+
+                comments.forEach((comment, index) => {
+                    const commentItem = document.createElement('div');
+                    commentItem.classList.add('comment-item');
+                    commentItem.setAttribute('data-comment-id', comment.id);
+
+                    let deleteButtonHtml = '';
+                    if (loggedInUser && loggedInUser === comment.author) { // Only allow deletion by the author
+                        deleteButtonHtml = `<button class="btn-link delete-comment-button" data-comment-index="${index}">Eliminar</button>`;
+                    }
+
+                    commentItem.innerHTML = `
+                        <div class="comment-header">
+                            <img src="${comment.avatar}" alt="Avatar Usuario" class="comment-avatar">
+                            <span class="comment-author">${comment.author}</span>
+                            <span class="comment-date">${comment.date}</span>
+                        </div>
+                        <p class="comment-body">${comment.text}</p>
+                        <div class="comment-actions">
+                            ${deleteButtonHtml}
+                        </div>
+                    `;
+                    commentList.appendChild(commentItem);
+                });
+                updateCommentCount();
+            }
+
+            // Check login status and enable/disable comment form
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const loggedInUsername = localStorage.getItem('loggedInUser');
+
+            if (isLoggedIn) {
+                commentNameInput.value = loggedInUsername;
+                commentNameInput.disabled = true;
+                commentEmailInput.disabled = false; // Assuming email is not pre-filled but can be entered
+                commentTextInput.disabled = false;
+                submitCommentButton.disabled = false;
+                commentLoginMessage.style.display = 'none'; // Hide login message
+            } else {
+                commentNameInput.disabled = true;
+                commentEmailInput.disabled = true;
+                commentTextInput.disabled = true;
+                submitCommentButton.disabled = true;
+                commentLoginMessage.style.display = 'block'; // Show login message
+            }
+
+            commentForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = commentNameInput.value;
+                const email = commentEmailInput.value;
+                const commentText = commentTextInput.value;
+
+                if (name && email && commentText) {
+                    const newComment = {
+                        id: Date.now(),
+                        author: name,
+                        email: email, // Storing email for potential future features, not displayed
+                        text: commentText,
+                        date: 'Justo ahora', // For immediate display, can be updated on refresh
+                        avatar: `https://i.pravatar.cc/50?img=${Math.floor(Math.random() * 70) + 1}`
+                    };
+
+                    comments.unshift(newComment); // Add new comment to the beginning
+                    saveComments();
+                    renderComments();
+                    commentForm.reset();
+                    commentNameInput.value = loggedInUsername; // Re-set username after reset
+
+                    alert('Comentario enviado exitosamente.');
+                } else {
+                    alert('Por favor, completa todos los campos del comentario.');
+                }
+            });
+
+            commentList.addEventListener('click', function(event) {
+                if (event.target.classList.contains('delete-comment-button')) {
+                    const indexToRemove = parseInt(event.target.dataset.commentIndex);
+                    if (confirm('¿Estás seguro de que quieres eliminar este comentario?')) {
+                        comments.splice(indexToRemove, 1);
+                        saveComments();
+                        renderComments();
+                        alert('Comentario eliminado.');
+                    }
+                }
+            });
+
+            // Initial render of comments
+            renderComments();
+        });
+    </script>
+
+    <script src="auth.js"></script>
+
+</body>
+</html>

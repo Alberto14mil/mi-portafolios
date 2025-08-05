@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Código - PHP vs. JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos para el botón de tema (ej. Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body data-theme="light">
+    <header class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">← Volver al Inicio</a></li>
+                <li class="spacer"></li> <!-- Espaciador para empujar el botón de tema a la derecha -->
+                <li>
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema">
+                        <i class="fas fa-moon"></i> <!-- Icono por defecto (cambiará) -->
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="section">
+            <h2>Comparador de Código: PHP vs. JavaScript</h2>
+            <p class="intro-text">Observa cómo se resuelve una misma tarea en dos lenguajes de programación distintos. Esto te ayudará a entender las similitudes y diferencias en la sintaxis y el enfoque.</p>
+
+            <div class="task-selector-container">
+                <label for="task-select">Selecciona una tarea:</label>
+                <select id="task-select" class="task-dropdown">
+                    <!-- Las opciones se poblarán dinámicamente con JavaScript -->
+                </select>
+            </div>
+
+            <div id="dynamic-content-area">
+                <!-- El contenido de la tarea seleccionada se cargará aquí con JavaScript -->
+                <div class="code-comparator-task">
+                    <h3 id="task-title"></h3>
+                    <p id="task-description"></p>
+                </div>
+
+                <div class="code-comparator-grid">
+                    <div class="code-block php-code">
+                        <div class="code-header">
+                            <h3>PHP</h3>
+                            <span class="language-tag">Backend</span>
+                            <button class="run-code-btn" data-lang="php">Ejecutar PHP</button>
+                        </div>
+                        <pre><code id="php-code-display"></code></pre>
+                        <div class="code-output" id="php-output">
+                            <h4>Salida PHP:</h4>
+                            <pre class="output-content"></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-block js-code">
+                        <div class="code-header">
+                            <h3>JavaScript</h3>
+                            <span class="language-tag">Frontend / Backend (Node.js)</span>
+                            <button class="run-code-btn" data-lang="js">Ejecutar JS</button>
+                        </div>
+                        <pre><code id="js-code-display"></code></pre>
+                        <div class="code-output" id="js-output">
+                            <h4>Salida JavaScript:</h4>
+                            <pre class="output-content"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 &lt;Código Académico/&gt;. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Enlazamos nuestro archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
