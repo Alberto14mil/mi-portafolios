@@ -1,0 +1,328 @@
+/* estilos-album.css */
+
+/* Variables CSS */
+:root {
+    --album-primary-color: #333;
+    --album-secondary-color: #555;
+    --album-accent-color: #007bff; /* Azul vibrante */
+    --album-background-light: #f4f4f4;
+    --album-background-dark: #e9e9e9;
+    --album-card-background: #fff;
+    --album-border-color: #ddd;
+    --album-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--album-background-light);
+    color: var(--album-primary-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header */
+.album-header {
+    background-color: var(--album-primary-color);
+    color: var(--album-text-light);
+    padding: 15px 0;
+    box-shadow: var(--album-box-shadow);
+    position: relative;
+    z-index: 1000;
+}
+
+.album-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.album-header h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+}
+
+/* Menú desplegable */
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8em;
+    cursor: pointer;
+    /* CAMBIO AQUÍ: Eliminamos 'display: none;' para que siempre sea visible. */
+    /* Si solo quieres que aparezca en móvil, esta línea debe volver a 'display: none;' */
+    /* y la media query de abajo para 992px debe tener 'display: block;' */
+    display: block; /* Hacemos que siempre sea visible */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    background-color: var(--album-primary-color);
+    box-shadow: var(--album-box-shadow);
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 200px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: var(--album-secondary-color);
+}
+
+/* Main Content */
+.album-main {
+    padding: 40px 0;
+}
+
+.album-section {
+    background-color: var(--album-card-background);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--album-box-shadow);
+    margin-bottom: 30px;
+}
+
+.album-section h2 {
+    color: var(--album-accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.album-description {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--album-secondary-color);
+    font-size: 1.1em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start; /* Asegura que las tarjetas se alineen en la parte superior */
+}
+
+.photo-card {
+    background-color: var(--album-background-dark);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Asegura que las tarjetas tengan la misma altura */
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 250px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Recorta la imagen para que cubra el área */
+    display: block;
+    cursor: pointer; /* Indicar que es clicable */
+}
+
+.photo-card h3 {
+    color: var(--album-primary-color);
+    padding: 15px;
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.photo-card .dedication-text {
+    padding: 0 15px 15px;
+    color: var(--album-secondary-color);
+    font-size: 0.95em;
+    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+    text-align: center;
+}
+
+/* Botón "Mostrar Más Fotos" */
+.show-more-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 25px;
+    background-color: var(--album-accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.show-more-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.photo-card.hidden-photo {
+    display: none;
+}
+
+/* Footer */
+.album-footer {
+    background-color: var(--album-primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* Estilos para la vista previa (overlay) */
+.preview-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Para apilar imagen y botón de descarga */
+    z-index: 10000;
+}
+
+.preview-overlay img {
+    max-width: 90%;
+    max-height: 80%; /* Deja espacio para el botón y el título/cerrar */
+    object-fit: contain;
+    border-radius: 8px; /* Bordes suaves para la imagen */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Sombra sutil */
+    margin-bottom: 20px; /* Espacio entre imagen y botón */
+}
+
+.preview-overlay .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 3em;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+    line-height: 1; /* Para que la 'x' no tenga espacio extra */
+}
+
+.preview-overlay .close-btn:hover {
+    color: var(--album-accent-color); /* Color de acento al pasar el ratón */
+}
+
+.preview-overlay .download-btn {
+    background-color: var(--album-accent-color); /* Color de acento para el botón */
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex; /* Para alinear icono y texto */
+    align-items: center;
+    gap: 8px;
+}
+
+.preview-overlay .download-btn:hover {
+    background-color: #0056b3; /* Un azul un poco más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+}
+
+.preview-overlay .download-btn i {
+    font-size: 1.2em;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 992px) {
+    /* Si deseas que el menú-toggle sea visible solo en móvil,
+       entonces aquí debería ir 'display: block;' y arriba en .menu-toggle 'display: none;' */
+    /* Dejándolo así, el botón siempre es visible. */
+    /* .menu-toggle {
+        display: block;
+    } */
+
+    .album-header h1 {
+        font-size: 1.8em;
+    }
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .album-section {
+        padding: 20px;
+    }
+
+    .preview-overlay .close-btn {
+        font-size: 2.5em;
+        top: 15px;
+        right: 15px;
+    }
+
+    .preview-overlay .download-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .album-header .header-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .album-header h1 {
+        font-size: 1.5em;
+    }
+    .dropdown-menu {
+        right: 50%;
+        transform: translateX(50%);
+        width: 90%;
+    }
+    .photo-card img {
+        height: 200px;
+    }
+    .preview-overlay img {
+        max-width: 95%;
+        max-height: 70%;
+    }
+}

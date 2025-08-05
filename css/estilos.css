@@ -1,0 +1,842 @@
+/* Variables CSS - Tema Claro (por defecto) */
+:root {
+    --primary-color: #007bff; /* Azul brillante */
+    --secondary-color: #6c757d; /* Gris secundario */
+    --accent-color: #28a745; /* Verde para acentos */
+    --text-light: #ffffff; /* Texto blanco para fondos oscuros */
+    --text-dark: #343a40; /* Texto oscuro para fondos claros */
+    --background-light: #f8f9fa; /* Fondo muy claro (casi blanco) */
+    --background-dark: #e2e8f0; /* Fondo ligeramente más oscuro para secciones alternas */
+    --card-background: #ffffff; /* Fondo de tarjeta claro */
+    --border-color: #dee2e6; /* Color de borde suave */
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --gradient-start: #007bff; /* Inicio gradiente hero */
+    --gradient-end: #0056b3; /* Fin gradiente hero */
+}
+
+/* Tema Oscuro */
+body.dark-theme {
+    --primary-color: #bcbcfd; /* Azul violeta */
+    --secondary-color: #bed2f5; /* Morado claro */
+    --accent-color: #03dac6; /* Cian para acentos */
+    --text-light: #f0f0f0; /* Texto muy claro para elementos específicos */
+    --text-dark: #e0e0e0; /* Texto principal claro para fondos oscuros (cumple "letras blancas") */
+    --background-light: #121212; /* Fondo muy oscuro */
+    --background-dark: #1f1f1f; /* Fondo oscuro para secciones */
+    --card-background: #2c2c2c; /* Fondo de tarjeta oscuro */
+    --border-color: #3a3a3a; /* Borde oscuro */
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra más oscura */
+    --gradient-start: #121212; /* Inicio gradiente hero oscuro */
+    --gradient-end: #1f1f1f; /* Fin gradiente hero oscuro */
+}
+
+/* Tema Informático (intermedio entre blanco y noche) */
+body.cs-theme {
+    --primary-color: #c68e91; /* Verde brillante (como terminal) */
+    --secondary-color: #c69090; /* Azul grisáceo */
+    --accent-color: #d59057d0; /* Amarillo para acentos/advertencias */
+    --text-light: #f0f0f0; /* Texto claro */
+    --text-dark: #E0E0E0; /* Texto principal claro para fondos oscuros */
+    --background-light: #784949; /* Fondo gris oscuro (más oscuro que blanco, más claro que noche) */
+    --background-dark: #5b1f1f; /* Fondo más oscuro para secciones (un poco más oscuro que el anterior) */
+    --card-background: #565151; /* Fondo de tarjeta gris oscuro */
+    --border-color: #5d5454; /* Borde gris oscuro */
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra */
+    --gradient-start: #212121; /* Inicio gradiente hero CS */
+    --gradient-end: #303030; /* Fin gradiente hero CS */
+}
+
+
+/* Estilos Generales y Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark); /* Usa la variable para el color de texto principal */
+    background-color: var(--background-light); /* Usa la variable para el fondo principal */
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para cambios de tema */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color); /* Usa la variable */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color); /* Usa la variable */
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark); /* Usa la variable */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header y Navegación */
+.header {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); /* Usa variables de gradiente */
+    color: var(--text-light); /* Usa la variable */
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-light); /* Usa la variable */
+    letter-spacing: 1px;
+}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list li {
+    margin-left: 30px;
+}
+
+.nav-list a {
+    color: var(--text-light); /* Usa la variable */
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color); /* Usa la variable */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+/* Sección Hero */
+.hero {
+    background: linear-gradient(to right, var(--background-light), var(--border-color)); /* Adapta el fondo del hero */
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--primary-color); /* Usa la variable */
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.4em;
+    color: var(--secondary-color); /* Usa la variable */
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color); /* Usa la variable */
+    color: var(--text-light); /* Usa la variable */
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3); /* Sombra basada en primary-color */
+}
+
+.btn:hover {
+    background-color: var(--accent-color); /* Usa la variable */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4); /* Sombra basada en accent-color */
+}
+
+/* Secciones Generales */
+.section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--background-light); /* Usa la variable */
+    color: var(--text-dark); /* Usa la variable */
+}
+
+.section:nth-child(even) {
+    background-color: var(--background-dark); /* Alterna con la variable de fondo oscuro */
+    color: var(--text-light); /* Texto claro para fondo oscuro */
+}
+
+.section h2 {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    color: var(--text-dark); /* Usa la variable */
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 4px;
+    background-color: var(--primary-color); /* Usa la variable */
+    bottom: -10px;
+    left: 15%;
+    border-radius: 2px;
+}
+
+/* Sección Sobre Mí / Información Personal */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: left;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow); /* Usa la variable */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+    max-width: 700px;
+}
+
+.about-text h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--primary-color); /* Usa la variable */
+}
+
+.about-text p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: var(--secondary-color); /* Usa la variable */
+}
+
+.cv-options .btn {
+    background-color: var(--primary-color); /* Usa la variable */
+    color: var(--text-light);
+}
+.cv-options .btn:nth-child(2) { /* Estilo para el botón de descargar */
+    background-color: var(--secondary-color); /* Usa la variable */
+}
+
+
+/* Sección Proyectos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: var(--card-background); /* Usa la variable */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow); /* Usa la variable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    border: 1px solid var(--border-color); /* Usa la variable */
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Sombra ligeramente ajustada para hover */
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--primary-color); /* Usa la variable */
+}
+
+.project-info p {
+    font-size: 0.95em;
+    color: var(--secondary-color); /* Usa la variable */
+    margin-bottom: 15px;
+}
+
+.project-tags {
+    font-size: 0.85em;
+    color: var(--secondary-color); /* Usa la variable */
+    margin-top: 10px;
+}
+
+.project-tags span {
+    display: inline-block;
+    background-color: var(--background-light); /* Usa la variable */
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color); /* Usa la variable */
+}
+
+/* Sección Cursos y Certificaciones */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.course-card {
+    background-color: var(--card-background); /* Usa la variable */
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: var(--box-shadow); /* Usa la variable */
+    text-align: left;
+    transition: transform 0.2s ease;
+    border: 1px solid var(--border-color); /* Usa la variable */
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 8px;
+    color: var(--primary-color); /* Usa la variable */
+}
+
+.course-card p {
+    font-size: 0.9em;
+    color: var(--secondary-color); /* Usa la variable */
+    margin-bottom: 5px;
+}
+
+.course-card .institution {
+    font-style: italic;
+    font-size: 0.85em;
+    color: var(--secondary-color); /* Usa la variable */
+}
+
+/* Sección Estudios y Trabajo Especial de Grado */
+.studies-content {
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--card-background); /* Usa la variable */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow); /* Usa la variable */
+    border: 1px solid var(--border-color); /* Usa la variable */
+}
+
+.studies-content h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--primary-color); /* Usa la variable */
+}
+
+.studies-content ul {
+    margin-bottom: 25px;
+}
+
+.studies-content ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: var(--secondary-color); /* Usa la variable */
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.studies-content .teg-info {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color); /* Usa la variable */
+}
+
+.studies-content .teg-info h4 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--accent-color); /* Usa la variable */
+}
+
+.studies-content .teg-info p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--secondary-color); /* Usa la variable */
+}
+
+.teg-options .btn {
+    background-color: var(--primary-color); /* Usa la variable */
+    color: var(--text-light);
+}
+.teg-options .btn:nth-child(2) { /* Estilo para el botón de descargar */
+    background-color: var(--accent-color); /* Usa la variable */
+}
+
+
+/* Footer */
+.footer {
+    background-color: var(--background-dark); /* Usa la variable */
+    color: var(--text-light); /* Usa la variable */
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer .social-links a {
+    color: var(--text-light); /* Usa la variable */
+    font-size: 1.8em;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: var(--primary-color); /* Usa la variable */
+}
+
+.footer p {
+    margin-top: 20px;
+    color: var(--secondary-color); /* Usa la variable */
+}
+
+/* Botón de Scroll-to-Top */
+#scrollTopBtn {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    bottom: 30px; /* 30px desde abajo */
+    right: 30px; /* 30px desde la derecha */
+    z-index: 99; /* Asegura que esté por encima de otros elementos */
+    border: none; /* Sin borde */
+    outline: none; /* Sin contorno al hacer clic */
+    background-color: var(--primary-color); /* Color de fondo */
+    color: white; /* Color del texto/icono */
+    cursor: pointer; /* Cursor de puntero */
+    padding: 15px; /* Relleno */
+    border-radius: 50%; /* Redondo */
+    font-size: 24px; /* Tamaño del icono */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#scrollTopBtn:hover {
+    background-color: var(--accent-color); /* Usa la variable */
+    transform: translateY(-3px);
+}
+
+
+/* Estilos para la Pantalla de Introducción (Splash Screen) */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); /* Usa tus variables de gradiente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    color: var(--text-light);
+    transition: opacity 0.7s ease-out, visibility 0.7s ease-out; /* Aumentamos el tiempo de transición */
+}
+
+#intro-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    padding: 30px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente un poco más oscuro */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+    max-width: 600px;
+    margin: 20px;
+    transform: translateY(0);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.intro-content h1 {
+    font-size: 3.5em; /* Tamaño de fuente más grande */
+    margin-bottom: 25px; /* Más espacio */
+    color: var(--text-light); /* Asegura que el título sea blanco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra de texto */
+}
+
+.intro-content p {
+    font-size: 1.4em; /* Tamaño de fuente más grande */
+    margin-bottom: 50px; /* Más espacio */
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.5;
+}
+
+/* Estilos para el botón circular de entrada */
+#enter-portfolio-btn {
+    width: 150px; /* Ancho y alto iguales para que sea circular */
+    height: 150px;
+    border-radius: 50%; /* Hace el botón circular */
+    background-color: var(--primary-color); /* Color de fondo */
+    color: var(--text-light); /* Color del texto */
+    font-size: 1.5em; /* Tamaño de fuente del texto del botón */
+    font-weight: 700; /* Negrita */
+    display: flex; /* Para centrar el texto vertical y horizontalmente */
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Quitar subrayado si fuera un <a> */
+    cursor: pointer; /* Indicar que es clickeable */
+    border: none; /* Quitar borde por defecto */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    transition: all 0.3s ease; /* Transición suave para efectos */
+    outline: none; /* Quitar contorno al hacer focus */
+}
+
+#enter-portfolio-btn:hover {
+    background-color: var(--accent-color); /* Cambia de color al pasar el mouse */
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+    box-shadow: 0 8px 20px rgba(70, 103, 138, 0.4);
+}
+
+#enter-portfolio-btn:active {
+    transform: scale(0.95); /* Ligeramente más pequeño al hacer clic */
+    background-color: #004d80; /* Un tono más oscuro de primary-color */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Estilo para ocultar el contenido del portafolio por defecto */
+#portfolio-content {
+    display: none; /* Oculto por defecto */
+    opacity: 0;
+    /* Añadimos transformaciones de inicio para la animación de entrada */
+    transform: scale(0.98) translateY(20px); /* Un poco más pequeño y hacia abajo al inicio */
+}
+
+/* Clase para mostrar el portafolio con la animación de "encendido" */
+#portfolio-content.show-portfolio {
+    display: block; /* Muestra el contenido */
+    opacity: 1; /* Fade-in */
+    transform: scale(1) translateY(0); /* Vuelve a su tamaño normal y posición */
+    transition: opacity 0.7s ease-in, transform 0.7s ease-in; /* Aplica la transición al mostrar */
+}
+
+
+/* Estilos para el switcher de temas */
+.theme-switcher {
+    position: fixed;
+    top: 20px; /* Ajusta según sea necesario para que no choque con el navbar */
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000; /* Asegura que esté por encima de la mayoría de los elementos */
+}
+
+.theme-btn {
+    background-color: var(--card-background); /* Fondo del botón de tema */
+    color: var(--text-dark); /* Color del icono */
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.theme-btn.active {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Resaltar el tema activo */
+    transform: scale(1.05);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-list {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-list li {
+        margin: 0 15px 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .section h2 {
+        font-size: 2em;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 80%;
+    }
+
+    .project-card, .course-card {
+        margin: 0 auto; /* Centrar tarjetas en pantallas pequeñas */
+        max-width: 400px; /* Limitar ancho para que no se estiren demasiado */
+    }
+
+    .studies-content {
+        padding: 25px;
+    }
+
+    .theme-switcher {
+        top: 10px;
+        right: 10px;
+        gap: 5px;
+    }
+
+    .theme-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1em;
+    }
+
+    #intro-screen .intro-content h1 {
+        font-size: 2.5em;
+    }
+    #intro-screen .intro-content p {
+        font-size: 1.1em;
+    }
+    #enter-portfolio-btn {
+        width: 120px;
+        height: 120px;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-list li {
+        margin: 5px 0;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+
+
+
+
+/*camion*/
+/* Loader (Truck Animation) Styles - From Uiverse.io by vinodjangid07 */
+/* From Uiverse.io by vinodjangid07 */ 
+/* From Uiverse.io by vinodjangid07 */
+/* From Uiverse.io by vinodjangid07 */
+.loader {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* IMPORTANTE: Si quieres que el efecto sea más amplio, puedes aumentar el width del .loader o del .truckWrapper aquí */
+  /* Por ejemplo, width: 400px; */
+}
+
+.truckWrapper {
+  width: 200px; /* Ancho de la ventana visible para el camión y la carretera */
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  overflow-x: hidden; /* Esto es CLAVE: recorta lo que sale de esta ventana */
+}
+/* truck upper body */
+.truckBody {
+  width: 130px;
+  height: fit-content;
+  margin-bottom: 6px;
+  animation: motion 1s linear infinite;
+}
+/* truck suspension animation*/
+@keyframes motion {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* truck's tires */
+.truckTires {
+  width: 130px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px 0px 15px;
+  position: absolute;
+  bottom: 0;
+}
+.truckTires svg {
+  width: 24px;
+}
+
+.road {
+  width: 100%; /* La base de la carretera ocupa el ancho del contenedor */
+  height: 1.5px;
+  background-color: #282828;
+  position: relative;
+  bottom: 0;
+  align-self: flex-end;
+  border-radius: 3px;
+}
+
+/* Modificaciones clave aquí para las líneas */
+.road::before {
+  content: "";
+  position: absolute;
+  width: 20px; /* Ancho del segmento de línea */
+  height: 100%;
+  background-color: #282828;
+  right: -100%; /* Posición inicial: fuera de la vista a la derecha */
+  border-radius: 3px;
+  animation: roadAnimation 1.4s linear infinite; /* Misma duración */
+  border-left: 10px solid white; /* La parte blanca de la línea */
+}
+.road::after {
+  content: "";
+  position: absolute;
+  width: 10px; /* Ancho del segmento de línea */
+  height: 100%;
+  background-color: #282828;
+  /* Calcula un 'right' que lo coloque justo donde termina el primer segmento cuando este entra en vista */
+  /* Si el primer segmento es 20px de ancho + 10px de borde + un espacio, el segundo debe aparecer después */
+  right: -180%; /* Ajusta para que haya una buena separación y continuidad */
+  border-radius: 3px;
+  animation: roadAnimation 1.4s linear infinite; /* Misma duración */
+  border-left: 4px solid white; /* La parte blanca de la línea */
+}
+
+.lampPost {
+  position: absolute;
+  bottom: 0;
+  right: -250px; /* Asegura que el poste empiece bien a la derecha */
+  height: 90px;
+  animation: lampPostAnimation 3s linear infinite; /* Nueva animación para el poste */
+}
+
+/* Keyframe para los elementos de la carretera (líneas) */
+@keyframes roadAnimation {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-400px); /* Distancia que recorren las líneas */
+  }
+}
+
+/* Nuevo Keyframe para el poste de luz, con una distancia mayor y su propia duración */
+@keyframes lampPostAnimation {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-600px); /* El poste se mueve más lejos para dar ilusión de continuidad */
+  }
+}
