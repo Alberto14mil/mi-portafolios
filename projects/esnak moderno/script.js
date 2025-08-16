@@ -5,49 +5,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameMessage = document.getElementById('gameMessage');
     const startButton = document.getElementById('startButton');
 
-    const gridSize = 20; // Tamaño de cada "cuadrado" de la serpiente y la comida
-    let tileCount = canvas.width / gridSize; // Número de cuadrados en el canvas (20x20 para 400x400)
+    const gridSize = 20;
+    let tileCountX = canvas.width / gridSize;
+    let tileCountY = canvas.height / gridSize;
 
-    let snake = [{ x: 10, y: 10 }]; // Posición inicial de la serpiente
-    let food = {}; // Posición de la comida
+    let snake = [{ x: 10, y: 10 }];
+    let food = {};
 
-    let dx = 0; // Dirección X (0 para arriba/abajo, 1 para derecha, -1 para izquierda)
-    let dy = 0; // Dirección Y (0 para izquierda/derecha, 1 para abajo, -1 para arriba)
+    let dx = 0;
+    let dy = 0;
 
     let score = 0;
     let gameRunning = false;
     let gameInterval;
-    let speed = 150; // Velocidad inicial del juego (ms por fotograma)
-    let changingDirection = false; // Para prevenir giros dobles en un solo fotograma
+    let speed = 150;
+    const MIN_SPEED = 50;
+    const SPEED_INCREMENT = 5;
+    const BIG_FOOD_SCORE_THRESHOLD = 100;
+    const BIG_FOOD_CHANCE = 0.3;
+    const BIG_FOOD_POINTS = 50;
+    let changingDirection = false;
 
-    // Paleta de colores (tomadas de estilo.css para coherencia)
-    const SNAKE_COLOR = '#00ff00'; // Verde neón
-    const FOOD_COLOR = '#ff00ff';  // Magenta neón
-    const BORDER_COLOR = '#00ffff'; // Cian neón
-    const GAME_BG_COLOR = '#000000'; // Negro puro
-
-    // --- Funciones del Juego ---
+    const SNAKE_COLOR = '#00ff00';
+    const FOOD_COLOR = '#ff00ff';
+    const BIG_FOOD_COLOR = '#ffcc00';
+    const BORDER_COLOR = '#00ffff';
+    const GAME_BG_COLOR = '#000000';
+    const START_SCORE = 10;
 
     function startGame() {
-        if (gameRunning) return; // Evita iniciar múltiples veces
+        if (gameRunning) return;
         gameRunning = true;
-        gameMessage.textContent = '¡Juego en progreso!';
-        startButton.style.display = 'none'; // Oculta el botón de inicio
+        gameMessage.textContent = '¡A Jugar!';
+        startButton.style.display = 'none';
 
-        score = 0;
+        score = START_SCORE;
         scoreDisplay.textContent = score;
-        snake = [{ x: 10, y: 10 }]; // Reinicia la serpiente en el centro
-        dx = 0; // Reinicia la dirección
+        snake = [{ x: 10, y: 10 }];
+        dx = 0;
         dy = 0;
+        speed = 150;
 
-        generateFood(); // Genera la primera comida
-        gameInterval = setInterval(gameLoop, speed); // Inicia el bucle del juego
+        generateFood();
+        gameInterval = setInterval(gameLoop, speed);
     }
 
     function gameLoop() {
         if (!gameRunning) return;
 
-        changingDirection = false; // Resetea la bandera para el siguiente fotograma
+        changingDirection = false;
 
         if (gameOver()) {
             endGame('¡Juego Terminado! Te chocaste.');
@@ -63,13 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearCanvas() {
         ctx.fillStyle = GAME_BG_COLOR;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        // Opcional: dibujar una cuadrícula sutil en el canvas
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)'; // Líneas muy tenues
-        for (let i = 0; i < tileCount; i++) {
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        for (let i = 0; i < tileCountX; i++) {
             ctx.beginPath();
             ctx.moveTo(i * gridSize, 0);
             ctx.lineTo(i * gridSize, canvas.height);
             ctx.stroke();
+        }
+        for (let i = 0; i < tileCountY; i++) {
             ctx.beginPath();
             ctx.moveTo(0, i * gridSize);
             ctx.lineTo(canvas.width, i * gridSize);
@@ -77,12 +84,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function drawSnakePart(part) {
+    function drawSnakePart(part, index) {
         ctx.fillStyle = SNAKE_COLOR;
         ctx.strokeStyle = BORDER_COLOR;
-        ctx.lineWidth = 1;
-        ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
-        ctx.strokeRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
+        ctx.lineWidth = 2;
+
+        if (index === 0) {
+            // Dibuja la cabeza (cuadrado)
+            ctx.fillRect(part.x * gridSize + 1, part.y * gridSize + 1, gridSize - 2, gridSize - 2);
+            ctx.strokeRect(part.x * gridSize + 1, part.y * gridSize + 1, gridSize - 2, gridSize - 2);
+        } else {
+            // Dibuja el cuerpo (círculo)
+            const radius = gridSize / 2;
+            const centerX = part.x * gridSize + radius;
+            const centerY = part.y * gridSize + radius;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius - 2, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+        }
     }
 
     function drawSnake() {
@@ -93,85 +113,97 @@ document.addEventListener('DOMContentLoaded', () => {
         let newFoodX, newFoodY;
         let foodOnSnake = true;
         while (foodOnSnake) {
-            newFoodX = Math.floor(Math.random() * tileCount);
-            newFoodY = Math.floor(Math.random() * tileCount);
+            newFoodX = Math.floor(Math.random() * tileCountX);
+            newFoodY = Math.floor(Math.random() * tileCountY);
             foodOnSnake = snake.some(part => part.x === newFoodX && part.y === newFoodY);
         }
-        food = { x: newFoodX, y: newFoodY };
+
+        const isBigFood = score >= BIG_FOOD_SCORE_THRESHOLD && Math.random() < BIG_FOOD_CHANCE;
+        
+        food = {
+            x: newFoodX,
+            y: newFoodY,
+            isBig: isBigFood
+        };
     }
 
     function drawFood() {
-        ctx.fillStyle = FOOD_COLOR;
-        ctx.strokeStyle = BORDER_COLOR;
-        ctx.lineWidth = 1;
-        ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
-        ctx.strokeRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+        const radius = gridSize / 2;
+        const centerX = food.x * gridSize + radius;
+        const centerY = food.y * gridSize + radius;
+
+        if (food.isBig) {
+            ctx.fillStyle = BIG_FOOD_COLOR;
+            ctx.strokeStyle = BIG_FOOD_COLOR;
+            ctx.lineWidth = 4;
+            ctx.shadowColor = BIG_FOOD_COLOR;
+            ctx.shadowBlur = 10;
+        } else {
+            ctx.fillStyle = FOOD_COLOR;
+            ctx.strokeStyle = FOOD_COLOR;
+            ctx.lineWidth = 2;
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+        }
+        
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius - 2, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
     }
 
     function moveSnake() {
-        // Crear la nueva cabeza de la serpiente
         const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-
-        // Añadir la nueva cabeza al principio del array de la serpiente
         snake.unshift(head);
-
-        // Verificar si la serpiente ha comido comida
         const hasEatenFood = head.x === food.x && head.y === food.y;
 
         if (hasEatenFood) {
-            score += 10;
+            score += food.isBig ? BIG_FOOD_POINTS : 10;
             scoreDisplay.textContent = score;
-            generateFood(); // Generar nueva comida
-            // Aumentar la velocidad cada cierto número de puntos (opcional)
-            if (score % 50 === 0 && speed > 50) { // Aumenta velocidad cada 50 puntos hasta 50ms
-                speed -= 10;
+            generateFood();
+            
+            if (speed > MIN_SPEED) {
+                speed -= SPEED_INCREMENT;
                 clearInterval(gameInterval);
                 gameInterval = setInterval(gameLoop, speed);
             }
         } else {
-            // Si no comió comida, quitar la cola de la serpiente
             snake.pop();
         }
     }
 
     function gameOver() {
-        // Colisión con sí misma
         for (let i = 4; i < snake.length; i++) {
             if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
         }
 
-        // Colisión con los bordes
         const hitLeftWall = snake[0].x < 0;
-        const hitRightWall = snake[0].x > tileCount - 1;
+        const hitRightWall = snake[0].x > tileCountX - 1;
         const hitTopWall = snake[0].y < 0;
-        const hitBottomWall = snake[0].y > tileCount - 1;
+        const hitBottomWall = snake[0].y > tileCountY - 1;
 
         return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
     }
 
     function endGame(message) {
         gameRunning = false;
-        clearInterval(gameInterval); // Detiene el bucle del juego
+        clearInterval(gameInterval);
         gameMessage.textContent = message;
         startButton.textContent = 'Volver a Jugar';
-        startButton.style.display = 'block'; // Muestra el botón para reiniciar
-        dx = 0; // Resetea la dirección para que no se mueva al reiniciar
+        startButton.style.display = 'block';
+        dx = 0;
         dy = 0;
     }
 
-    // HACEMOS ESTA FUNCIÓN GLOBAL PARA QUE PUEDA SER LLAMADA DESDE EL HTML (en este caso, desde el script del HTML)
     window.restartGame = function() {
-        endGame('Presiona ENTER o haz click para empezar'); // Resetea el mensaje y botón
-        startGame(); // Inicia un nuevo juego
+        endGame('Presiona ENTER o haz click para empezar');
+        startGame();
     };
-
-    // --- Manejo de Eventos ---
 
     document.addEventListener('keydown', changeDirection);
     startButton.addEventListener('click', startGame);
 
     function changeDirection(event) {
-        // Si ya estamos cambiando de dirección en este fotograma, ignorar
         if (changingDirection) return;
         changingDirection = true;
 
@@ -189,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!gameRunning && keyPressed === ENTER_KEY) {
             startGame();
-            return; // No procesa la dirección si el juego no ha iniciado
+            return;
         }
 
         if (keyPressed === LEFT_KEY && !goingRight) {
@@ -207,6 +239,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicializa el canvas vacío al cargar
     clearCanvas();
 });
