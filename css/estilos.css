@@ -2,7 +2,7 @@
 :root {
     --primary-color: #007bff; /* Azul brillante */
     --secondary-color: #6c757d; /* Gris secundario */
-    --accent-color: #28a745; /* Verde para acentos */
+    --accent-color: #a7eef6; /* Verde para acentos */
     --text-light: #ffffff; /* Texto blanco para fondos oscuros */
     --text-dark: #343a40; /* Texto oscuro para fondos claros */
     --background-light: #f8f9fa; /* Fondo muy claro (casi blanco) */
@@ -839,4 +839,5 @@ h1, h2, h3, h4 {
   100% {
     transform: translateX(-600px); /* El poste se mueve más lejos para dar ilusión de continuidad */
   }
+
 }
