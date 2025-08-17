@@ -1,0 +1,457 @@
+/* Variables CSS para fácil personalización */
+:root {
+    --primary-color-dark: #3F51B5; /* Azul oscuro - similar al fondo principal */
+    --primary-color-light: #4A63E7; /* Azul más claro para acentos o degradados */
+    --accent-color-green: #8BC34A; /* Verde vibrante para botones/destacados */
+    --text-color-dark: #212121; /* Texto oscuro para contraste */
+    --text-color-light: #ffffff; /* Texto claro para fondos oscuros */
+    --background-light: #eceff1; /* Fondo gris muy claro azulado - similar a "material design light" */
+    --card-background: #ffffff; /* Fondo de tarjetas */
+    --border-radius: 10px; /* Bordes más redondeados */
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08); /* Sombra suave */
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+}
+
+/* Estilos Generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-light);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal en animaciones */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto; /* Más espacio en los márgenes */
+    padding: 0 25px; /* Más padding lateral */
+}
+
+/* Encabezado Hero */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color-dark) 0%, var(--primary-color-light) 100%); /* Degradado de azules */
+    color: var(--text-color-light);
+    text-align: center;
+    padding: 100px 20px; /* Mayor padding vertical */
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden; /* Ocultar posibles desbordamientos de elementos decorativos */
+}
+
+.hero-content h1 {
+    font-size: 3.5em; /* Tamaño de fuente más grande */
+    margin-bottom: 20px;
+    font-weight: 700; /* Más negrita */
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra de texto suave */
+}
+
+.hero-content p {
+    font-size: 1.4em; /* Tamaño de fuente más grande */
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+/* Estilos de Sección General */
+.section-card {
+    background-color: var(--card-background);
+    padding: 45px; /* Mayor padding */
+    margin-bottom: 35px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    border: 1px solid #e0e0e0; /* Borde sutil */
+}
+
+.section-card h2 {
+    text-align: center;
+    color: var(--primary-color-dark); /* Título azul oscuro */
+    margin-bottom: 35px;
+    font-size: 2.5em; /* Títulos más grandes */
+    font-weight: 700;
+}
+
+/* Sección de Actores (Evaluados) */
+.actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Mayor espacio entre tarjetas */
+    text-align: center;
+}
+
+.actor-card {
+    background-color: #e3f2fd; /* Azul muy claro para tarjetas de actores */
+    padding: 35px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #bbdefb; /* Borde suave azul */
+}
+
+.actor-card:hover {
+    transform: translateY(-8px); /* Efecto de elevación más pronunciado */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.actor-card h3 {
+    color: var(--primary-color-dark);
+    font-size: 1.8em; /* Título de actor más grande */
+    margin-bottom: 12px;
+}
+
+.actor-card p {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    margin-bottom: 5px; /* Menos espacio entre líneas de texto */
+}
+
+/* Formularios (Registro/Login y Votación) */
+.voting-form, .auth-form {
+    max-width: 550px; /* Ancho un poco más estrecho */
+    margin: 0 auto 35px auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    background-color: var(--card-background);
+    box-shadow: var(--shadow-light);
+}
+
+.form-group {
+    margin-bottom: 25px; /* Más espacio entre campos */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--text-color-dark); /* Color de etiqueta más oscuro */
+    font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 15px; /* Más padding en inputs */
+    border: 1px solid #ced4da; /* Borde más suave */
+    border-radius: 8px; /* Bordes de inputs más redondeados */
+    font-size: 1.1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color-dark); /* Borde azul al enfocar */
+    box-shadow: 0 0 0 4px rgba(63, 81, 181, 0.2); /* Sombra azul al enfocar */
+}
+
+/* Botones */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 18px; /* Mayor padding para botones */
+    background-color: var(--primary-color-dark); /* Azul oscuro principal */
+    color: var(--text-color-light);
+    border: none;
+    border-radius: 8px; /* Bordes más redondeados */
+    font-size: 1.2em; /* Texto más grande */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-light); /* Azul más claro al pasar el ratón */
+    transform: translateY(-3px); /* Efecto de elevación */
+}
+
+.btn-primary:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.btn-secondary { /* Estilo para el botón de registro si se quiere diferente */
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background-color: var(--accent-color-green); /* Verde vibrante */
+    color: var(--text-color-light);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px; /* Espacio entre botones */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: #7cb342; /* Un verde ligeramente más oscuro */
+    transform: translateY(-3px);
+}
+
+
+/* Mensajes de Autenticación */
+#auth-message {
+    font-size: 1.1em;
+    padding: 10px 0;
+}
+
+/* Resultados de Votación y Gráfico */
+.voting-results {
+    margin-top: 45px;
+    text-align: center;
+}
+
+.voting-results h3 {
+    color: var(--primary-color-dark);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.chart-container {
+    max-width: 750px; /* Ancho ligeramente mayor para el gráfico */
+    margin: 0 auto;
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    border: 1px solid #e0e0e0;
+}
+
+/* Sección de Ganadores */
+.winners-display {
+    display: flex;
+    justify-content: center;
+    gap: 35px; /* Mayor espacio entre tarjetas de ganadores */
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.winner-card {
+    background: linear-gradient(45deg, var(--primary-color-dark), var(--primary-color-light)); /* Degradado en la tarjeta del ganador */
+    color: var(--text-color-light);
+    padding: 40px; /* Mayor padding */
+    border-radius: var(--border-radius);
+    text-align: center;
+    min-width: 320px; /* Ancho mínimo un poco mayor */
+    flex: 1;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent; /* Para el efecto de borde */
+    overflow: hidden; /* Para animaciones internas */
+}
+
+.winner-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.winner-card h3 {
+    font-size: 2.2em; /* Título de ganador más grande */
+    margin-bottom: 15px;
+    color: var(--accent-color-green); /* Verde vibrante para destacar el título */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.winner-name {
+    font-size: 3em; /* Nombre de ganador mucho más grande */
+    font-weight: 900; /* Extra negrita */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.winner-score {
+    font-size: 1.8em;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+/* Pie de Página */
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    background-color: var(--primary-color-dark); /* Fondo azul oscuro */
+    color: var(--text-color-light);
+    font-size: 1em;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Efectos de Animación (Mantener) --- */
+@keyframes pulse-glow {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--shadow-medium);
+        border: 2px solid transparent;
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 25px var(--accent-color-green), 0 0 40px var(--accent-color-green);
+        border: 2px solid var(--accent-color-green);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-medium);
+        border: 2px solid transparent;
+    }
+}
+
+.winner-highlight {
+    animation: pulse-glow 1.8s ease-in-out infinite; /* Animación ligeramente más lenta */
+    box-sizing: border-box;
+}
+
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden; /* Asegura que el confeti no cause scroll */
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color-green);
+    opacity: 0;
+    animation: fade-and-fall 4s forwards; /* Animación de confeti más larga */
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+@keyframes fade-and-fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3em;
+    }
+    .hero-content p {
+        font-size: 1.3em;
+    }
+    .section-card h2 {
+        font-size: 2.2em;
+    }
+    .actor-card h3 {
+        font-size: 1.6em;
+    }
+    .winner-card h3 {
+        font-size: 2em;
+    }
+    .winner-name {
+        font-size: 2.8em;
+    }
+    .winner-score {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 80px 15px;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    .container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    .section-card {
+        padding: 30px;
+        margin-bottom: 25px;
+    }
+    .section-card h2 {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+    .actors-grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    .voting-form, .auth-form {
+        padding: 25px;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 15px;
+        font-size: 1.1em;
+    }
+    .winner-card {
+        min-width: unset;
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 30px;
+    }
+    .winner-name {
+        font-size: 2.5em;
+    }
+    .winner-score {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 0.95em;
+    }
+    .section-card h2 {
+        font-size: 1.8em;
+    }
+    .actor-card h3 {
+        font-size: 1.4em;
+    }
+    .actor-card p {
+        font-size: 1em;
+    }
+    .form-group label {
+        font-size: 1em;
+    }
+    .form-group input, .form-group select {
+        font-size: 1em;
+        padding: 12px;
+    }
+    .btn-primary, .btn-secondary {
+        font-size: 1em;
+    }
+    .winner-card h3 {
+        font-size: 1.8em;
+    }
+    .winner-name {
+        font-size: 2.2em;
+    }
+    .winner-score {
+        font-size: 1.2em;
+    }
+}
