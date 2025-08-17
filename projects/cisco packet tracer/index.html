@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio | Cisco Packet Tracer</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Portafolio de proyectos de Cisco Packet Tracer." />
+</head>
+<body>
+  <!-- Barra superior con idioma y tema -->
+  <nav class="topbar">
+    <div class="container topbar__inner">
+    <a href="../../index.html" class="link-ghost" data-i18n="navPortfolio">Portafolio</a>
+    <div class="topbar__actions">
+        <button id="langToggle" class="icon-btn" aria-label="Cambiar idioma">ES</button>
+        <button id="themeToggle" class="icon-btn" aria-label="Cambiar tema" title="Tema">🌙</button>
+    </div>
+    </div>
+</nav>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 data-i18n="heroTitle">Proyectos en Packet Tracer </h1>
+      <p data-i18n="heroSubtitle">Simulaciones de red creadas en Cisco Packet Tracer (.pkt) con vista previa y descarga.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="projects">
+      <article class="card">
+        <img src="assets/img/toplogia.bmp" alt="Topología Proyecto 1" class="card-thumb" />
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="project1Title">Proyecto 1: Topología de Campus</h2>
+          <p class="card-desc" data-i18n="project1Desc">Diseño de red con VLANs, basica en diferente topologias de red.</p>
+          <div class="card-actions">
+            <a href="assets/video/topo.webm" class="btn preview-btn" data-type="video" data-src="assets/video/topo.webm" data-i18n="preview">Ver vista previa</a>
+            <a href="assets/pkt/topologias de Red Anillo-Mixta Simulacion en Cisco Packet Tracer.pkt" class="btn btn-outline" download data-i18n="download">Descargar .PKT</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="assets/img/casa inteligente.bmp" alt="casa inteligente" class="card-thumb" />
+        <div class="card-body">
+          <h2 class="card-title" data-i18n="project2Title">Proyecto 2: casa inteligente</h2>
+          <p class="card-desc" data-i18n="project2Desc">se realizo un conexion remota desde la casa a un celular para controlos los dispositivo de forma remota.</p>
+          <div class="card-actions">
+            <a href="assets/video/Cisco Packet Trace park casa inteligente.webm" class="btn preview-btn" data-type="video" data-src="assets/video/Cisco Packet Trace park casa inteligente.webm" data-i18n="preview">Ver vista previa</a>
+            <a href="assets/pkt/casa inteligente.pkt" class="btn btn-outline" download data-i18n="download">Descargar .PKT</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Sección inferior: Portafolio -->
+    <section id="portafolio" class="portfolio-cta">
+    <h2 data-i18n="portfolioHeading">Portafolio</h2>
+    <p data-i18n="portfolioText">Ver todos mis proyectos aquí.</p>
+    <!-- Cambia el href por el enlace de tu portafolio general -->
+    <a href="../../index.html" class="btn" target="_blank" rel="noopener" data-i18n="portfolioButton">Ir al portafolio completo</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <!-- Cambia el href por tu linkedin -->
+      <a href="https://www.linkedin.com/in/alberto-brito-a88942135/" class="btn insta" target="_blank" rel="noopener" data-i18n="contactMe">Contácteme</a>
+      <small data-i18n="copyright">© 2025 Alberto Brito. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Vista previa">
+      <button class="modal-close" aria-label="Cerrar" data-close="true">×</button>
+      <div class="modal-content">
+        <!-- El contenido se inyecta por JS -->
+      </div>
+    </div>
+  </div>
+
+<script src="js/main.js" defer></script>
+
+<!-- Script mínimo para idioma/tema (puedes moverlo a js/main.js si prefieres) -->
+<script>
+    (function () {
+    const html = document.documentElement;
+    const langBtn = document.getElementById('langToggle');
+    const themeBtn = document.getElementById('themeToggle');
+
+    const i18n = {
+        es: {
+        siteTitle: 'Portafolio | Cisco Packet Tracer',
+        navPortfolio: 'Portafolio',
+        heroTitle: 'Proyectos en Packet Tracer',
+        heroSubtitle: 'Simulaciones de red creadas en Cisco Packet Tracer (.pkt) con vista previa y descarga.',
+        project1Title: 'Proyecto 1: Topología de Campus',
+        project1Desc: 'Diseño de red con VLANs, basica en diferente topologias de red.',
+        project2Title: 'Proyecto 2: casa inteligente',
+        project2Desc: 'se realizo un conexion remota desde la casa a un celular para controlos los dispositivo de forma remota.',
+        preview: 'Ver vista previa',
+        download: 'Descargar .PKT',
+        portfolioHeading: 'Portafolio',
+        portfolioText: 'Ver todos mis proyectos aquí.',
+        portfolioButton: 'Ir al portafolio completo',
+        contactMe: 'Contácteme',
+        copyright: '© 2025 Tu Nombre. Todos los derechos reservados.'
+        },
+        en: {
+            siteTitle: 'Portfolio | Cisco Packet Tracer',
+            navPortfolio: 'Portfolio',
+            heroTitle: 'Packet Tracer Projects',
+            heroSubtitle: 'Network simulations created in Cisco Packet Tracer (.pkt) with preview and download.',
+            project1Title: 'Project 1: Campus Topology',
+            project1Desc: 'Network design with VLANs, basic across different network topologies.',
+            project2Title: 'Project 2: Smart Home',
+            project2Desc: 'A remote connection from the house to a phone to control devices remotely.',
+            preview: 'Preview',
+            download: 'Download .PKT',
+            portfolioHeading: 'Portfolio',
+            portfolioText: 'See all my projects here.',
+            portfolioButton: 'Go to full portfolio',
+            contactMe: 'Contact me',
+            copyright: '© 2025 Your Name. All rights reserved.'
+        }
+      };
+
+      function applyLang(lang) {
+        const dict = i18n[lang] || i18n.es;
+        document.title = dict.siteTitle;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) el.textContent = dict[key];
+        });
+        document.documentElement.lang = lang;
+        langBtn.textContent = lang.toUpperCase();
+        localStorage.setItem('lang', lang);
+      }
+
+      function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+        localStorage.setItem('theme', theme);
+      }
+
+      // Eventos
+      langBtn.addEventListener('click', () => {
+        const next = (localStorage.getItem('lang') || 'es') === 'es' ? 'en' : 'es';
+        applyLang(next);
+      });
+
+      themeBtn.addEventListener('click', () => {
+        const next = (html.getAttribute('data-theme') || 'dark') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+      });
+
+      // Estado inicial (persistencia)
+      applyLang(localStorage.getItem('lang') || 'es');
+      applyTheme(localStorage.getItem('theme') || 'dark');
+    })();
+  </script>
+</body>
+</html>
