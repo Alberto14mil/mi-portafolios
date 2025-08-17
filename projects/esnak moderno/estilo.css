@@ -1,0 +1,334 @@
+/* Variables CSS para el tema "Neon Grid Snake" */
+:root {
+    --bg-color: #0d0d1a; /* Fondo muy oscuro, casi negro */
+    --grid-line-color: rgba(0, 255, 255, 0.1); /* Líneas de rejilla cian tenue */
+    --snake-color: #00ff00; /* Verde neón para la serpiente */
+    --food-color: #ff00ff; /* Magenta neón para la comida */
+    --border-color: #00ffff; /* Cian neón para bordes y acentos */
+    --text-color: #00ffff; /* Cian neón para texto principal */
+    --secondary-text-color: #00ccff; /* Azul cian más suave */
+    --game-bg-color: #000000; /* Fondo del canvas negro puro */
+    --panel-bg-color: rgba(0, 50, 50, 0.4); /* Fondo semi-transparente para paneles */
+    --button-bg-color: #007777; /* Botón de tono cian oscuro */
+    --button-hover-color: #00aaaa; /* Botón de tono cian más claro al pasar el ratón */
+
+    --font-heading: 'Press Start 2P', cursive; /* Fuente pixel-art para títulos */
+    --font-body: 'Orbitron', sans-serif; /* Fuente tech para texto general */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Oculta barras de desplazamiento no deseadas */
+    position: relative;
+    /* Fondo con efecto de rejilla */
+    background-image:
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 50px 50px; /* Tamaño de cada celda de la rejilla */
+    animation: background-move 60s linear infinite; /* Animación de movimiento lento */
+}
+
+/* Animación de movimiento del fondo */
+@keyframes background-move {
+    from { background-position: 0 0; }
+    to { background-position: 5000px 5000px; } /* Mueve el fondo lentamente */
+}
+
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 90%;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.game-container {
+    background-color: var(--panel-bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.3);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px; /* Tamaño máximo para el contenedor del juego */
+}
+
+.game-info {
+    text-align: center;
+    width: 100%;
+}
+
+.game-info h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2em;
+    color: var(--border-color);
+    text-shadow: 0 0 10px var(--border-color);
+    margin-bottom: 10px;
+}
+
+#gameMessage {
+    font-size: 1.1em;
+    color: var(--secondary-text-color);
+    margin-bottom: 15px;
+    min-height: 1.2em; /* Para evitar saltos cuando el mensaje cambia */
+}
+
+.stats {
+    font-size: 1.3em;
+    color: var(--secondary-text-color);
+}
+
+#score {
+    font-family: var(--font-heading);
+    color: var(--snake-color);
+    text-shadow: 0 0 5px var(--snake-color);
+}
+
+#gameCanvas {
+    background-color: var(--game-bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), inset 0 0 8px rgba(0, 255, 255, 0.2);
+    display: block; /* Elimina espacio extra debajo del canvas */
+}
+
+.game-button {
+    background-color: var(--button-bg-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+.game-button:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
+/* --- Barra lateral (Menú desplegable) --- */
+.sidebar-toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: var(--panel-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 100;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.sidebar-toggle-btn:hover {
+    background-color: var(--button-hover-color);
+    transform: scale(1.05);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Oculta la barra lateral inicialmente */
+    width: 280px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro con transparencia */
+    color: var(--secondary-text-color);
+    z-index: 99;
+    overflow-y: auto;
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Transición elástica */
+    padding-top: 60px; /* Espacio para el toggle button */
+    box-sizing: border-box;
+    border-right: 2px solid var(--border-color);
+    box-shadow: 5px 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    color: var(--border-color);
+    text-shadow: 0 0 5px var(--border-color);
+}
+
+.close-sidebar-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.8em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-sidebar-btn:hover {
+    color: var(--snake-color);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar-menu li {
+    padding: 15px 25px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.sidebar-menu li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-menu li a {
+    display: block;
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.sidebar-menu li a i {
+    margin-right: 10px;
+    color: var(--border-color);
+    transition: color 0.3s ease;
+}
+
+.sidebar-menu li a:hover {
+    color: var(--text-color);
+    text-shadow: 0 0 5px var(--text-color);
+}
+
+.sidebar-menu li a:hover i {
+    color: var(--snake-color);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: rgba(0, 255, 255, 0.5);
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 98;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 20px;
+    }
+
+    .game-info h1 {
+        font-size: 1.8em;
+    }
+
+    #gameMessage, .stats {
+        font-size: 1em;
+    }
+
+    .game-button {
+        padding: 10px 20px;
+        font-size: 1.1em;
+    }
+
+    .sidebar {
+        width: 240px;
+        left: -240px;
+    }
+
+    .sidebar-header h3 {
+        font-size: 1.4em;
+    }
+
+    .sidebar-menu li a {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: 30px 30px; /* Celdas de rejilla más pequeñas en móviles */
+    }
+
+    .game-container {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .game-info h1 {
+        font-size: 1.5em;
+    }
+
+    #gameCanvas {
+        width: 100%; /* El canvas se ajusta al ancho del contenedor */
+        height: auto;
+        border-width: 1px;
+    }
+
+    .sidebar-toggle-btn {
+        top: 15px;
+        left: 15px;
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .sidebar-menu li {
+        padding: 12px 20px;
+    }
+
+    .sidebar-menu li a {
+        font-size: 0.95em;
+    }
+}
