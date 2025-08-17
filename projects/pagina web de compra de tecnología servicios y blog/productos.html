@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Solutions - Catálogo de Productos y Servicios</title>
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/876/876118.svg" type="image/svg+xml"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variables CSS para colores y espaciado */
+        :root {
+            --primary-color: #3498db;          /* Azul claro */
+            --primary-dark-color: #2c3e50;     /* Azul oscuro casi negro */
+            --secondary-color: #34495e;        /* Azul grisáceo oscuro */
+            --accent-color: #e74c3c;           /* Rojo */
+            --light-grey: #ecf0f1;             /* Gris muy claro */
+            --dark-grey: #7f8c8d;              /* Gris medio */
+            --text-color: #2c3e50;             /* Color de texto general */
+            --border-color: #bdc3c7;           /* Color de borde */
+
+            --spacing-xs: 5px;
+            --spacing-s: 10px;
+            --spacing-m: 20px;
+            --spacing-l: 30px;
+            --spacing-xl: 50px;
+
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
+        }
+
+        /* Estilos Globales y Reutilizables */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-grey);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-m);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 0;
+            color: var(--primary-dark-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark-color);
+            border-color: var(--primary-dark-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-secondary.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Header */
+        .main-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-s) 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .logo p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: var(--spacing-m);
+        }
+
+        .main-nav a {
+            color: white;
+            font-weight: 500;
+            padding: var(--spacing-s) 0;
+            position: relative;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--primary-color);
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-s);
+        }
+
+        .cart-icon {
+            margin-left: var(--spacing-s);
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer; /* Make it clickable */
+            position: relative;
+        }
+        .cart-icon:hover {
+            color: var(--accent-color);
+        }
+        .cart-item-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+        }
+
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-xl) 0 var(--spacing-m) 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: var(--spacing-l);
+            margin-bottom: var(--spacing-l);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: var(--spacing-m);
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            padding: var(--spacing-s);
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: var(--spacing-m);
+            font-size: 1.4rem;
+        }
+
+        .footer-section p, .footer-section ul {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-s);
+        }
+
+        .footer-section ul a {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-section ul a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-m);
+            margin-top: var(--spacing-m);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            padding-top: var(--spacing-m);
+        }
+
+        /* Media Queries Globales */
+        @media (max-width: 992px) {
+            .main-nav ul {
+                gap: var(--spacing-s);
+            }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .main-nav {
+                margin: var(--spacing-s) 0;
+            }
+            .user-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .logo {
+                margin-bottom: var(--spacing-s);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+            .main-nav a {
+                padding: var(--spacing-xs) 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-section {
+                min-width: unset;
+                width: 90%;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+
+        /* Home Page Specific Styles (used as base for general pages) */
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            min-height: 40vh; /* Ajustado para páginas internas */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem; /* Ajustado para páginas internas */
+            margin-bottom: var(--spacing-m);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem; /* Ajustado para páginas internas */
+            margin-bottom: var(--spacing-l);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Products/Services Highlight Section (used for entire products page) */
+        .products-highlight-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-grey);
+            text-align: center;
+        }
+
+        .products-highlight-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-l);
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-card .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-card .product-content {
+            padding: var(--spacing-m);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-s);
+            color: var(--secondary-color);
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            color: var(--dark-grey);
+            margin-bottom: var(--spacing-m);
+            flex-grow: 1;
+        }
+
+        .product-card .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-m);
+            text-align: right; /* Alinea el precio a la derecha */
+        }
+        
+        .product-card .btn {
+            width: 100%; /* Make button full width of its container */
+            margin-top: auto; /* Push button to the bottom */
+        }
+
+
+        /* Media Queries for Products Page */
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .products-highlight-section h2 {
+                font-size: 2rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr; /* Stack on small screens */
+            }
+            .product-card .product-image {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+        }
+
+
+        /* --- Carrito y Pago Modal Styles --- */
+        .cart-modal, .payment-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: var(--spacing-l);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: fadeInScale 0.3s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-button {
+            color: var(--dark-grey);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--accent-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-m);
+            font-size: 2rem;
+            color: var(--primary-dark-color);
+            text-align: center;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+            margin-bottom: var(--spacing-m);
+            max-height: 300px; /* Scrollable if many items */
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+        }
+
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-s) var(--spacing-m);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.1rem;
+        }
+        #cart-items li:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .item-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: var(--spacing-m);
+            transition: transform var(--transition-speed);
+        }
+        .remove-item:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: var(--spacing-m);
+            padding-top: var(--spacing-s);
+            border-top: 2px dashed var(--border-color);
+            color: var(--primary-dark-color);
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+            gap: var(--spacing-m);
+            margin-top: var(--spacing-m);
+        }
+        .cart-actions .btn {
+            padding: 10px 20px;
+        }
+
+        /* Payment Modal Specifics */
+        .payment-modal .modal-content {
+            max-width: 500px;
+        }
+
+        .payment-form .form-group {
+            margin-bottom: var(--spacing-m);
+            text-align: left;
+        }
+        .payment-form label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        .payment-form input[type="text"],
+        .payment-form input[type="email"],
+        .payment-form input[type="number"],
+        .payment-form select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .payment-form input:focus, .payment-form select:focus {
+            border-color: var(--primary-dark-color);
+            box-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+        }
+
+        .payment-methods {
+            margin-bottom: var(--spacing-l);
+            text-align: left;
+        }
+        .payment-methods h4 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-s);
+            color: var(--secondary-color);
+        }
+        .payment-methods .radio-group {
+            display: flex;
+            flex-direction: column; /* Stack radio buttons */
+            gap: var(--spacing-s);
+        }
+        .payment-methods .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-s);
+            font-weight: normal;
+            cursor: pointer;
+            color: var(--dark-grey);
+        }
+        .payment-methods .radio-group input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: all var(--transition-speed);
+            flex-shrink: 0;
+        }
+        .payment-methods .radio-group input[type="radio"]:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .payment-methods .radio-group input[type="radio"]:checked::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .payment-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-m);
+            margin-top: var(--spacing-m);
+        }
+
+        /* Payment Validation Message */
+        #payment-validation-message {
+            margin-top: var(--spacing-m);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success-message {
+            color: green;
+        }
+        .error-message {
+            color: var(--accent-color);
+        }
+
+        /* Responsive for Modals */
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 95%;
+                padding: var(--spacing-m);
+            }
+            .modal-content h3 {
+                font-size: 1.8rem;
+            }
+            #cart-items li {
+                font-size: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .item-price, .remove-item {
+                margin-top: var(--spacing-xs);
+                margin-left: 0;
+            }
+            .cart-actions {
+                flex-direction: column;
+            }
+            .cart-actions .btn {
+                width: 100%;
+            }
+            .payment-modal .modal-content {
+                padding: var(--spacing-m);
+            }
+            .payment-methods .radio-group {
+                gap: var(--spacing-s);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>TechNova Solutions</h1>
+                <p>Innovación a tu alcance</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="productos.html" class="nav-link active">Productos</a></li>
+                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn btn-secondary" id="loginButton">Ingresar</a>
+                <a href="registro.html" class="btn btn-primary" id="registerButton">Registro</a>
+                
+                <span id="welcomeMessage" style="display: none; color: white; font-weight: 600; margin-right: 15px;"></span>
+                <button id="logoutButton" class="btn btn-primary" style="display: none;">Cerrar Sesión</button>
+
+                <a href="#" class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart fa-lg" style="color: white;"></i>
+                    <span class="cart-item-count" id="cart-item-count">0</span>
+                </a> 
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h2>Descubre Nuestro Catálogo Completo</h2>
+                <p>Explora nuestra amplia gama de productos innovadores y servicios tecnológicos de vanguardia.</p>
+            </div>
+        </section>
+
+        <section class="products-highlight-section">
+            <div class="container">
+                <h2>Nuestras Soluciones para Ti</h2>
+                <div class="products-grid">
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Software de Gestión Empresarial" class="product-image">
+                        <div class="product-content">
+                            <h3>Software de Gestión Empresarial</h3>
+                            <p>Producto: Optimiza tus operaciones con nuestro ERP modular y escalable. ¡Control total de tu negocio!</p>
+                            <div class="product-price">$599.99</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Software de Gestión Empresarial" data-price="599.99">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images1.jpg" alt="Servicio de Consultoría IT" class="product-image">
+                        <div class="product-content">
+                            <h3>Consultoría en Ciberseguridad</h3>
+                            <p>Servicio: Protege tus activos digitales con consultoría experta en seguridad informática. Análisis de vulnerabilidades y soluciones.</p>
+                            <div class="product-price">$299.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Consultoría en Ciberseguridad" data-price="299.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images2.jpg" alt="Desarrollo Web Personalizado" class="product-image">
+                        <div class="product-content">
+                            <h3>Desarrollo Web Personalizado</h3>
+                            <p>Servicio: Creamos tu presencia online ideal. Sitios web y aplicaciones a medida, 100% responsive y optimizados.</p>
+                            <div class="product-price">$899.50</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Desarrollo Web Personalizado" data-price="899.50">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images3.jpg" alt="Licencia Antivirus Pro" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia Antivirus Pro (1 Año)</h3>
+                            <p>Producto: Protección avanzada contra malware, ransomware y amenazas en línea para tu dispositivo.</p>
+                            <div class="product-price">$49.99</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia Antivirus Pro (1 Año)" data-price="49.99">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images4.jpg" alt="Suite Ofimática Empresarial" class="product-image">
+                        <div class="product-content">
+                            <h3>Suite Ofimática Empresarial</h3>
+                            <p>Producto: Todas las herramientas esenciales para la productividad: procesador de texto, hojas de cálculo y presentaciones.</p>
+                            <div class="product-price">$199.99</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Suite Ofimática Empresarial" data-price="199.99">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images5.jpg" alt="Software de Diseño Gráfico Pro" class="product-image">
+                        <div class="product-content">
+                            <h3>Software de Diseño Gráfico Pro</h3>
+                            <p>Producto: Herramientas completas para diseño gráfico, edición de imágenes y creación de contenido visual de alta calidad.</p>
+                            <div class="product-price">$349.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Software de Diseño Gráfico Pro" data-price="349.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/Sistema-de-contabilidad-integrado.webp" alt="Software de Contabilidad Integrado" class="product-image">
+                        <div class="product-content">
+                            <h3>Software de Contabilidad Integrado</h3>
+                            <p>Producto: Solución integral para la gestión financiera, contabilidad y reportes de tu empresa.</p>
+                            <div class="product-price">$249.99</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Software de Contabilidad Integrado" data-price="249.99">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="./imagenes/images6.jpg" alt="CRM para PYMES" class="product-image">
+                        <div class="product-content">
+                            <h3>Sistema de Gestión de Clientes (CRM)</h3>
+                            <p>Producto: Mejora la relación con tus clientes y optimiza tus ventas con nuestro CRM intuitivo.</p>
+                            <div class="product-price">$399.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Sistema de Gestión de Clientes (CRM)" data-price="399.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images7.jpg" alt="Plataforma de E-learning Empresarial" class="product-image">
+                        <div class="product-content">
+                            <h3>Plataforma de E-learning Empresarial</h3>
+                            <p>Producto: Crea y gestiona cursos de formación para tus empleados o clientes de forma eficiente.</p>
+                            <div class="product-price">$750.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Plataforma de E-learning Empresarial" data-price="750.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images8.jpg" alt="Herramienta de Analítica Web" class="product-image">
+                        <div class="product-content">
+                            <h3>Herramienta de Analítica Web Avanzada</h3>
+                            <p>Producto: Obtén insights profundos sobre el rendimiento de tu sitio web y el comportamiento de tus usuarios.</p>
+                            <div class="product-price">$149.99</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Herramienta de Analítica Web Avanzada" data-price="149.99">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images9.jpg" alt="Workstation de Alto Rendimiento" class="product-image">
+                        <div class="product-content">
+                            <h3>Workstation de Alto Rendimiento</h3>
+                            <p>Producto: Potente equipo diseñado para tareas exigentes como edición de video, diseño 3D y desarrollo de software.</p>
+                            <div class="product-price">$1899.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Workstation de Alto Rendimiento" data-price="1899.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images10.jpg" alt="Servidor de Red NAS" class="product-image">
+                        <div class="product-content">
+                            <h3>Servidor de Red NAS (8TB)</h3>
+                            <p>Producto: Solución de almacenamiento en red para copias de seguridad, compartición de archivos y acceso remoto.</p>
+                            <div class="product-price">$789.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servidor de Red NAS (8TB)" data-price="789.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images11.jpg" alt="Kit Wi-Fi Mesh Pro" class="product-image">
+                        <div class="product-content">
+                            <h3>Kit de Red Wi-Fi Mesh Pro</h3>
+                            <p>Producto: Cobertura Wi-Fi total y sin interrupciones para tu hogar u oficina con tecnología Mesh avanzada.</p>
+                            <div class="product-price">$219.99</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Kit de Red Wi-Fi Mesh Pro" data-price="219.99">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/paquetes-premium-anual.png" alt="Soporte Técnico Premium" class="product-image">
+                        <div class="product-content">
+                            <h3>Paquete de Soporte Técnico Premium (Anual)</h3>
+                            <p>Servicio: Soporte técnico ilimitado 24/7 para tus sistemas y equipos, con atención prioritaria.</p>
+                            <div class="product-price">$499.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Paquete de Soporte Técnico Premium (Anual)" data-price="499.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Migración a la Nube Básica" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Migración a la Nube (Básico)</h3>
+                            <p>Servicio: Asistencia para migrar tus datos y aplicaciones a plataformas en la nube de forma segura y eficiente.</p>
+                            <div class="product-price">$1200.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Migración a la Nube (Básico)" data-price="1200.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images12.jpg" alt="Auditoría Completa de Ciberseguridad" class="product-image">
+                        <div class="product-content">
+                            <h3>Auditoría Completa de Ciberseguridad</h3>
+                            <p>Servicio: Evaluación exhaustiva de tus sistemas para identificar vulnerabilidades y mejorar tu postura de seguridad.</p>
+                            <div class="product-price">$850.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Auditoría Completa de Ciberseguridad" data-price="850.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images13.jpg" alt="Servicio de Recuperación de Datos" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Recuperación de Datos (Nivel 1)</h3>
+                            <p>Servicio: Recuperación profesional de datos perdidos de discos duros, SSD y otros dispositivos de almacenamiento.</p>
+                            <div class="product-price">$350.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Recuperación de Datos (Nivel 1)" data-price="350.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images14.jpg" alt="Implementación de Redes Corporativas" class="product-image">
+                        <div class="product-content">
+                            <h3>Implementación de Redes Corporativas</h3>
+                            <p>Servicio: Diseño e instalación de infraestructura de red robusta y segura para tu empresa.</p>
+                            <div class="product-price">$1500.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Implementación de Redes Corporativas" data-price="1500.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images15.jpg" alt="Configuración de Servidores" class="product-image">
+                        <div class="product-content">
+                            <h3>Configuración de Servidores Dedicados</h3>
+                            <p>Servicio: Instalación y optimización de servidores para aplicaciones críticas y bases de datos.</p>
+                            <div class="product-price">$600.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Configuración de Servidores Dedicados" data-price="600.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images16.jpg" alt="Desarrollo de Apps Móviles" class="product-image">
+                        <div class="product-content">
+                            <h3>Desarrollo de Aplicaciones Móviles (Base)</h3>
+                            <p>Servicio: Creación de aplicaciones móviles personalizadas para iOS y Android, desde la idea hasta el lanzamiento.</p>
+                            <div class="product-price">$1500.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Desarrollo de Aplicaciones Móviles (Base)" data-price="1500.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images17.jpg" alt="Consultoría de Transformación Digital" class="product-image">
+                        <div class="product-content">
+                            <h3>Consultoría de Transformación Digital</h3>
+                            <p>Servicio: Guía estratégica para integrar tecnologías digitales en todos los aspectos de tu negocio.</p>
+                            <div class="product-price">$950.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Consultoría de Transformación Digital" data-price="950.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images18.jpg" alt="Optimización de Base de Datos" class="product-image">
+                        <div class="product-content">
+                            <h3>Optimización de Base de Datos</h3>
+                            <p>Servicio: Mejora el rendimiento y la eficiencia de tus bases de datos para un acceso más rápido a la información.</p>
+                            <div class="product-price">$700.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Optimización de Base de Datos" data-price="700.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images19.jpg" alt="Gestión de Proyectos IT" class="product-image">
+                        <div class="product-content">
+                            <h3>Gestión de Proyectos IT (Mensual)</h3>
+                            <p>Servicio: Servicio de Project Management para asegurar la ejecución exitosa de tus iniciativas tecnológicas.</p>
+                            <div class="product-price">$1100.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Gestión de Proyectos IT (Mensual)" data-price="1100.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images20.jpg" alt="DRaaS Plan Anual" class="product-image">
+                        <div class="product-content">
+                            <h3>DRaaS (Backup y Recuperación ante Desastres)</h3>
+                            <p>Servicio: Plan anual de recuperación ante desastres para proteger tus datos y asegurar la continuidad del negocio.</p>
+                            <div class="product-price">$3600.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="DRaaS (Backup y Recuperación ante Desastres)" data-price="3600.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images21.jpg" alt="Hosting Cloud Premium" class="product-image">
+                        <div class="product-content">
+                            <h3>Hosting Cloud Premium (Anual)</h3>
+                            <p>Servicio: Alojamiento web de alto rendimiento y escalabilidad en la nube para tu sitio o aplicación.</p>
+                            <div class="product-price">$120.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Hosting Cloud Premium (Anual)" data-price="120.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images22.jpg" alt="Servicios de Contenedores" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicios de Contenedores (Docker/Kubernetes)</h3>
+                            <p>Servicio: Implementación y gestión de entornos de contenedores para tus aplicaciones.</p>
+                            <div class="product-price">$800.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicios de Contenedores (Docker/Kubernetes)" data-price="800.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="./imagenes/images23.jpg" alt="Consultoría DevOps" class="product-image">
+                        <div class="product-content">
+                            <h3>Consultoría DevOps</h3>
+                            <p>Servicio: Optimiza tus procesos de desarrollo y operaciones con prácticas DevOps y automatización.</p>
+                            <div class="product-price">$1100.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Consultoría DevOps" data-price="1100.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/plan_ciberseguridad.webp" alt="Workshop Ciberseguridad" class="product-image">
+                        <div class="product-content">
+                            <h3>Workshop de Ciberseguridad para Empleados</h3>
+                            <p>Servicio: Capacitación práctica para sensibilizar a tu equipo sobre las mejores prácticas de seguridad.</p>
+                            <div class="product-price">$250.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Workshop de Ciberseguridad para Empleados" data-price="250.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images24.jpg" alt="Curso Programación Web Full Stack" class="product-image">
+                        <div class="product-content">
+                            <h3>Curso de Programación Web Full Stack (Intensivo)</h3>
+                            <p>Servicio: Formación completa para convertirte en un desarrollador web experto, dominando frontend y backend.</p>
+                            <div class="product-price">$1200.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Curso de Programación Web Full Stack (Intensivo)" data-price="1200.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/asesoria-06-ASESORÍA-LOPD.webp" alt="Asesoría Protección de Datos" class="product-image">
+                        <div class="product-content">
+                            <h3>Asesoría en Protección de Datos (GDPR/LOPD)</h3>
+                            <p>Servicio: Consultoría para asegurar que tu empresa cumpla con las normativas de privacidad y protección de datos.</p>
+                            <div class="product-price">$400.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Asesoría en Protección de Datos (GDPR/LOPD)" data-price="400.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images25.jpg" alt="Licencia para Análisis de Big Data" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia para Análisis de Big Data</h3>
+                            <p>Producto: Herramienta poderosa para procesar y analizar grandes volúmenes de datos.</p>
+                            <div class="product-price">$799.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia para Análisis de Big Data" data-price="799.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="./imagenes/images26.jpg" alt="Asesoría en Inteligencia Artificial" class="product-image">
+                        <div class="product-content">
+                            <h3>Asesoría en Inteligencia Artificial (IA)</h3>
+                            <p>Servicio: Implementación de soluciones de IA para automatización, análisis predictivo y más.</p>
+                            <div class="product-price">$1500.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Asesoría en Inteligencia Artificial (IA)" data-price="1500.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/7044158.webp" alt="Servicio de Desarrollo de APIs" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Desarrollo de APIs Personalizadas</h3>
+                            <p>Servicio: Creación de interfaces de programación de aplicaciones para integrar sistemas y servicios.</p>
+                            <div class="product-price">$900.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Desarrollo de APIs Personalizadas" data-price="900.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/uno.webp" alt="Auditoría de Seguridad de Aplicaciones" class="product-image">
+                        <div class="product-content">
+                            <h3>Auditoría de Seguridad de Aplicaciones Web</h3>
+                            <p>Servicio: Evaluación de la seguridad de tus aplicaciones web para prevenir ataques y vulnerabilidades.</p>
+                            <div class="product-price">$750.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Auditoría de Seguridad de Aplicaciones Web" data-price="750.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images27.jpg" alt="Consultoría en Blockchain" class="product-image">
+                        <div class="product-content">
+                            <h3>Consultoría en Tecnología Blockchain</h3>
+                            <p>Servicio: Asesoría para la implementación de soluciones basadas en blockchain para seguridad y transparencia.</p>
+                            <div class="product-price">$1000.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Consultoría en Tecnología Blockchain" data-price="1000.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images.png" alt="Licencia Herramienta BI" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia Herramienta de Business Intelligence</h3>
+                            <p>Producto: Software para transformar tus datos en información valiosa y visualizable para la toma de decisiones.</p>
+                            <div class="product-price">$650.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia Herramienta de Business Intelligence" data-price="650.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images28.jpg" alt="Servicio de Consultoría SEO" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Consultoría SEO Avanzada</h3>
+                            <p>Servicio: Mejora tu posicionamiento en buscadores para atraer más tráfico orgánico a tu sitio web.</p>
+                            <div class="product-price">$450.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Consultoría SEO Avanzada" data-price="450.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/IoT-Hardware.webp" alt="Desarrollo de Software IoT" class="product-image">
+                        <div class="product-content">
+                            <h3>Desarrollo de Software IoT (Prototipo)</h3>
+                            <p>Servicio: Creación de software para dispositivos del Internet de las Cosas (IoT), desde prototipos a soluciones completas.</p>
+                            <div class="product-price">$1800.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Desarrollo de Software IoT (Prototipo)" data-price="1800.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images29.jpg" alt="Licencia para Gestión de Almacenes" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia para Gestión de Almacenes (WMS)</h3>
+                            <p>Producto: Software para optimizar la logística y el control de inventario en tus almacenes.</p>
+                            <div class="product-price">$700.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia para Gestión de Almacenes (WMS)" data-price="700.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/que-es-el-marketing-automation.webp" alt="Herramienta de Automatización de Marketing" class="product-image">
+                        <div class="product-content">
+                            <h3>Herramienta de Automatización de Marketing (Anual)</h3>
+                            <p>Producto: Plataforma para automatizar tus campañas de marketing digital y gestión de leads.</p>
+                            <div class="product-price">$550.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Herramienta de Automatización de Marketing (Anual)" data-price="550.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images (1).png" alt="Servicio de Consultoría en Big Data" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Consultoría en Big Data</h3>
+                            <p>Servicio: Asesoramiento para la implementación y análisis de soluciones de Big Data.</p>
+                            <div class="product-price">$1400.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Consultoría en Big Data" data-price="1400.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="./imagenes/pngwing.com_-1200x900.png" alt="Servicio de Virtualización" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Virtualización de Servidores</h3>
+                            <p>Servicio: Optimiza el uso de tus recursos de hardware mediante la virtualización de servidores.</p>
+                            <div class="product-price">$950.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Virtualización de Servidores" data-price="950.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images30.jpg" alt="Desarrollo de Chatbots" class="product-image">
+                        <div class="product-content">
+                            <h3>Desarrollo de Chatbots con IA</h3>
+                            <p>Servicio: Implementación de chatbots inteligentes para mejorar la atención al cliente y la eficiencia operativa.</p>
+                            <div class="product-price">$700.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Desarrollo de Chatbots con IA" data-price="700.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images (2).png" alt="Mantenimiento de Software Preventivo" class="product-image">
+                        <div class="product-content">
+                            <h3>Mantenimiento de Software Preventivo (Anual)</h3>
+                            <p>Servicio: Servicio proactivo para asegurar el buen funcionamiento y la actualización de tus aplicaciones.</p>
+                            <div class="product-price">$400.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Mantenimiento de Software Preventivo (Anual)" data-price="400.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images31.jpg" alt="Curso de Ethical Hacking" class="product-image">
+                        <div class="product-content">
+                            <h3>Curso de Ethical Hacking y Pen Testing</h3>
+                            <p>Servicio: Capacitación intensiva en técnicas de seguridad ofensiva para proteger sistemas y redes.</p>
+                            <div class="product-price">$1500.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Curso de Ethical Hacking y Pen Testing" data-price="1500.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images32.jpg" alt="Licencia Software de Gestión de Proyectos" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia Software de Gestión de Proyectos</h3>
+                            <p>Producto: Herramienta para planificar, ejecutar y monitorizar tus proyectos de forma colaborativa.</p>
+                            <div class="product-price">$299.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia Software de Gestión de Proyectos" data-price="299.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="./imagenes/images33.jpg" alt="Servicio de Implementación ERP" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Implementación ERP (Pymes)</h3>
+                            <p>Servicio: Asesoría e implementación de sistemas ERP adaptados a las necesidades de pequeñas y medianas empresas.</p>
+                            <div class="product-price">$2500.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Implementación ERP (Pymes)" data-price="2500.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/programas_nominas_consejo_eleccion.webp" alt="Licencia Sistema de Nómina" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia Sistema de Nómina y RRHH</h3>
+                            <p>Producto: Software completo para la gestión de nóminas, recursos humanos y cumplimiento fiscal.</p>
+                            <div class="product-price">$380.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia Sistema de Nómina y RRHH" data-price="380.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Servicio de Consultoría en Nube Híbrida" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Consultoría en Nube Híbrida</h3>
+                            <p>Servicio: Diseño e implementación de arquitecturas de nube híbrida para flexibilidad y eficiencia.</p>
+                            <div class="product-price">$1300.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Consultoría en Nube Híbrida" data-price="1300.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/Redes-ciberseguridad.jpeg" alt="Software de Monitoreo de Redes" class="product-image">
+                        <div class="product-content">
+                            <h3>Software de Monitoreo de Redes (Licencia)</h3>
+                            <p>Producto: Herramienta para supervisar el rendimiento y la seguridad de tu infraestructura de red.</p>
+                            <div class="product-price">$450.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Software de Monitoreo de Redes (Licencia)" data-price="450.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/image-1.webp" alt="Asesoría en Optimización de Rendimiento Web" class="product-image">
+                        <div class="product-content">
+                            <h3>Asesoría en Optimización de Rendimiento Web</h3>
+                            <p>Servicio: Mejora la velocidad de carga y la experiencia del usuario de tu sitio web.</p>
+                            <div class="product-price">$600.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Asesoría en Optimización de Rendimiento Web" data-price="600.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="./imagenes/images35.jpg" alt="Servicio de Consultoría en UX/UI" class="product-image">
+                        <div class="product-content">
+                            <h3>Servicio de Consultoría en UX/UI</h3>
+                            <p>Servicio: Diseño de experiencias de usuario (UX) y interfaces de usuario (UI) intuitivas y atractivas.</p>
+                            <div class="product-price">$850.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Servicio de Consultoría en UX/UI" data-price="850.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+                    
+                    <article class="product-card">
+                        <img src="./imagenes/dms_diagram.webp" alt="Licencia de Software de Gestión de Documentos" class="product-image">
+                        <div class="product-content">
+                            <h3>Licencia de Software de Gestión de Documentos (DMS)</h3>
+                            <p>Producto: Solución para organizar, almacenar y gestionar documentos electrónicos de forma segura.</p>
+                            <div class="product-price">$499.00</div>
+                            <button class="btn btn-primary add-to-cart" data-name="Licencia de Software de Gestión de Documentos (DMS)" data-price="499.00">Añadir al Carrito</button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container cta-content">
+                <h2>¿Necesitas una solución a medida?</h2>
+                <p>Contáctanos para una consulta personalizada y descubramos cómo podemos ayudarte.</p>
+                <a href="contacto.html" class="btn btn-primary">¡Hablemos!</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-section about">
+                <h3>Sobre TechNova Solutions</h3>
+                <p>Tu aliado en tecnología. Ofrecemos las mejores soluciones de software, seguridad y capacitación para que siempre estés a la vanguardia.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f fa-2x" style="color: white;"></i></a> 
+                    <a href="#" target="_blank"><i class="fab fa-twitter fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in fa-2x" style="color: white;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TechNova Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" id="close-cart-modal">&times;</span>
+            <h3>Tu Carrito de Compras</h3>
+            <ul id="cart-items">
+            </ul>
+            <div class="cart-total">Total: $<span id="cart-total-price">0.00</span></div>
+            <div class="cart-actions">
+                <button class="btn btn-secondary" id="continue-shopping">Seguir Comprando</button>
+                <button class="btn btn-primary" id="checkout-button">Pagar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="payment-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" id="close-payment-modal">&times;</span>
+            <h3>Confirmar Pago</h3>
+            <p>Total a pagar: $<span id="payment-amount-display">0.00</span></p>
+            <form id="payment-form" class="payment-form">
+                <div class="form-group">
+                    <label for="payer-name">Nombre Completo</label>
+                    <input type="text" id="payer-name" required placeholder="Ej: Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="payer-email">Correo Electrónico</label>
+                    <input type="email" id="payer-email" required placeholder="ejemplo@dominio.com">
+                </div>
+                <div class="form-group">
+                    <label for="payer-phone">Teléfono (opcional)</label>
+                    <input type="text" id="payer-phone" placeholder="Ej: +584123456789">
+                </div>
+
+                <div class="payment-methods">
+                    <h4>Método de Pago</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" name="payment-method" value="credit-card" checked> Tarjeta de Crédito</label>
+                        <label><input type="radio" name="payment-method" value="pago-movil"> Pago Móvil (Venezuela)</label>
+                        <label><input type="radio" name="payment-method" value="paypal"> PayPal</label>
+                        <label><input type="radio" name="payment-method" value="transfer"> Transferencia Bancaria</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="simulated-payment-amount">Monto Exacto a Pagar (simulación)</label>
+                    <input type="number" id="simulated-payment-amount" step="0.01" min="0" placeholder="Ingresa el monto exacto" required>
+                </div>
+
+                <div class="payment-buttons">
+                    <button type="button" class="btn btn-secondary" id="cancel-payment">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="process-payment">Validar Pago</button>
+                </div>
+                <div id="payment-validation-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.getElementById('cart-icon');
+            const cartItemCount = document.getElementById('cart-item-count');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCartModal = document.getElementById('close-cart-modal');
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalPriceSpan = document.getElementById('cart-total-price');
+            const continueShoppingBtn = document.getElementById('continue-shopping');
+            const checkoutButton = document.getElementById('checkout-button');
+
+            const paymentModal = document.getElementById('payment-modal');
+            const closePaymentModal = document.getElementById('close-payment-modal');
+            const paymentAmountDisplay = document.getElementById('payment-amount-display');
+            const paymentForm = document.getElementById('payment-form');
+            const simulatedPaymentAmountInput = document.getElementById('simulated-payment-amount');
+            const paymentValidationMessage = document.getElementById('payment-validation-message');
+            const cancelPaymentButton = document.getElementById('cancel-payment');
+
+            // Cargar el carrito desde localStorage al iniciar
+            let cart = JSON.parse(localStorage.getItem('cart')) || []; 
+
+            // Función para guardar el carrito en localStorage
+            function saveCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // Función para actualizar el carrito en la UI
+            function updateCartUI() {
+                cartItemsList.innerHTML = ''; // Limpiar la lista actual
+                let total = 0;
+
+                if (cart.length === 0) {
+                    cartItemsList.innerHTML = '<li style="text-align: center; color: var(--dark-grey);">El carrito está vacío.</li>';
+                    cartItemCount.style.display = 'none'; // Ocultar el contador
+                    checkoutButton.disabled = true; // Deshabilitar botón de pagar
+                } else {
+                    cart.forEach((item, index) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <span class="item-name">${item.name}</span>
+                            <span class="item-price">$${item.price.toFixed(2)}</span>
+                            <button class="remove-item" data-index="${index}">&times;</button>
+                        `;
+                        cartItemsList.appendChild(li);
+                        total += item.price;
+                    });
+                    cartItemCount.style.display = 'block'; // Mostrar el contador
+                    cartItemCount.textContent = cart.length;
+                    checkoutButton.disabled = false; // Habilitar botón de pagar
+                }
+                cartTotalPriceSpan.textContent = total.toFixed(2); // Actualizar total
+                saveCart(); // Guardar el carrito después de cada actualización de la UI
+            }
+
+            // Event listener para añadir productos al carrito
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.dataset.name;
+                    const productPrice = parseFloat(this.dataset.price);
+
+                    cart.push({ name: productName, price: productPrice });
+                    updateCartUI(); // Esto ahora también guardará en localStorage
+                    alert(`${productName} ha sido añadido al carrito.`);
+                    cartModal.style.display = 'flex'; // Abrir el carrito automáticamente
+                });
+            });
+
+            // Event listener para eliminar productos del carrito
+            cartItemsList.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-item')) {
+                    const indexToRemove = parseInt(event.target.dataset.index);
+                    cart.splice(indexToRemove, 1); // Eliminar el item del array
+                    updateCartUI(); // Actualizar la UI y guardar en localStorage
+                }
+            });
+
+            // Abrir/Cerrar Carrito Modal
+            cartIcon.addEventListener('click', function() {
+                cartModal.style.display = 'flex';
+                updateCartUI(); // Asegurarse de que el carrito esté actualizado al abrirlo
+            });
+
+            closeCartModal.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+
+            continueShoppingBtn.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+
+            // Abrir Modal de Pago
+            checkoutButton.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Tu carrito está vacío. No puedes proceder al pago.');
+                    return;
+                }
+                const total = parseFloat(cartTotalPriceSpan.textContent);
+                paymentAmountDisplay.textContent = total.toFixed(2);
+                simulatedPaymentAmountInput.value = ''; // Limpiar el input de monto simulado
+                paymentValidationMessage.textContent = ''; // Limpiar mensaje de validación
+                
+                cartModal.style.display = 'none'; // Cerrar carrito
+                paymentModal.style.display = 'flex'; // Abrir pago
+            });
+
+            // Cerrar Modal de Pago
+            closePaymentModal.addEventListener('click', function() {
+                paymentModal.style.display = 'none';
+                paymentForm.reset(); // Resetear el formulario
+                paymentValidationMessage.textContent = ''; // Limpiar mensaje de validación
+            });
+
+            cancelPaymentButton.addEventListener('click', function() {
+                paymentModal.style.display = 'none';
+                paymentForm.reset(); // Resetear el formulario
+                paymentValidationMessage.textContent = ''; // Limpiar mensaje de validación
+            });
+
+            // Simular Proceso de Pago
+            paymentForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evitar el envío real del formulario
+
+                const totalRequired = parseFloat(paymentAmountDisplay.textContent);
+                const simulatedAmount = parseFloat(simulatedPaymentAmountInput.value);
+
+                if (isNaN(simulatedAmount)) {
+                    paymentValidationMessage.textContent = 'Por favor, ingresa un monto válido.';
+                    paymentValidationMessage.className = 'error-message';
+                    return;
+                }
+
+                if (simulatedAmount === totalRequired) {
+                    paymentValidationMessage.textContent = '¡Felicidades, gracias por su compra!';
+                    paymentValidationMessage.className = 'success-message';
+                    
+                    // Simular un pequeño retraso antes de resetear
+                    setTimeout(() => {
+                        alert('¡Tu pago ha sido procesado con éxito! Recibirás un correo de confirmación.');
+                        cart = []; // Vaciar el carrito
+                        updateCartUI(); // Actualizar la UI del carrito y guardar el carrito vacío
+                        paymentModal.style.display = 'none'; // Cerrar el modal de pago
+                        paymentForm.reset(); // Resetear el formulario de pago
+                        paymentValidationMessage.textContent = '';
+                    }, 1500);
+
+                } else {
+                    paymentValidationMessage.textContent = 'Pago no validado. El monto ingresado no coincide con el total. Se cancela la compra.';
+                    paymentValidationMessage.className = 'error-message';
+                    
+                    // Simular un pequeño retraso antes de resetear
+                    setTimeout(() => {
+                        alert('La transacción ha sido cancelada debido a un monto incorrecto.');
+                        paymentForm.reset(); // Resetear el formulario de pago
+                        paymentValidationMessage.textContent = '';
+                    }, 2500);
+                }
+            });
+
+            // Cerrar modales si se hace clic fuera de ellos
+            window.addEventListener('click', function(event) {
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+                if (event.target == paymentModal) {
+                    paymentModal.style.display = 'none';
+                    paymentForm.reset();
+                    paymentValidationMessage.textContent = '';
+                }
+            });
+
+            // Inicializar el carrito al cargar la página (cargará desde localStorage o estará vacío)
+            updateCartUI();
+        });
+    </script>
+    <script src="auth.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

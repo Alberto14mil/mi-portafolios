@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-F8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Solutions - Iniciar Sesión</title>
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/876/876118.svg" type="image/svg+xml"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="estilo.css"> 
+    <link rel="stylesheet" href="estilos2.css"> </head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>TechNova Solutions</h1>
+                <p>Innovación a tu alcance</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="productos.html" class="nav-link">Productos</a></li>
+                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="login.html" class="btn btn-secondary" id="loginButton">Ingresar</a>
+                <a href="registro.html" class="btn btn-primary" id="registerButton">Registro</a>
+                
+                <span id="welcomeMessage" style="display: none; color: white; font-weight: 600; margin-right: 15px;"></span>
+                <button id="logoutButton" class="btn btn-primary" style="display: none;">Cerrar Sesión</button>
+
+                <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart fa-lg" style="color: white;"></i><span class="cart-item-count">0</span></a> 
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-section login-section">
+            <div class="container auth-container">
+                <h2 class="section-title">Inicia Sesión en tu Cuenta</h2>
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="login_username">Nombre de Usuario o Email:</label>
+                        <input type="text" id="login_username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login_password">Contraseña:</label>
+                        <input type="password" id="login_password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <p class="auth-link-text">¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+                    <p id="loginMessage" class="message"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-section about">
+                <h3>Sobre TechNova Solutions</h3>
+                <p>Somos líderes en soluciones de software, seguridad y capacitación para que siempre estés a la vanguardia.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f fa-2x" style="color: white;"></i></a> 
+                    <a href="#" target="_blank"><i class="fab fa-twitter fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram fa-2x" style="color: white;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in fa-2x" style="color: white;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TechNova Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script>
+        // Lógica específica para login.html
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío real del formulario
+
+            const usernameOrEmail = document.getElementById('login_username').value;
+            const password = document.getElementById('login_password').value;
+            const messageElement = document.getElementById('loginMessage');
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const foundUser = users.find(user => 
+                (user.username === usernameOrEmail || user.email === usernameOrEmail) && user.password === password
+            );
+
+            if (foundUser) {
+                // Simular inicio de sesión exitoso
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('loggedInUser', foundUser.username); // Guardar el nombre de usuario
+                messageElement.textContent = 'Inicio de sesión exitoso. Redirigiendo...';
+                messageElement.className = 'message success'; // Clase CSS para éxito
+                this.reset();
+
+                // Redirigir a la página principal después de un breve retraso
+                setTimeout(() => {
+                    window.location.href = 'index.html'; // O la página a la que quieras ir después del login
+                }, 1500);
+            } else {
+                messageElement.textContent = 'Nombre de usuario/email o contraseña incorrectos.';
+                messageElement.className = 'message error'; // Clase CSS para error
+            }
+        });
+    </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartIcon = document.getElementById('cart-icon');
+            const cartItemCount = document.getElementById('cart-item-count');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCartModal = document.getElementById('close-cart-modal');
+            const cartItemsList = document.getElementById('cart-items');
+            const cartTotalPriceSpan = document.getElementById('cart-total-price');
+            const continueShoppingBtn = document.getElementById('continue-shopping');
+            const checkoutButton = document.getElementById('checkout-button');
+
+            const paymentModal = document.getElementById('payment-modal');
+            const closePaymentModal = document.getElementById('close-payment-modal');
+            const paymentAmountDisplay = document.getElementById('payment-amount-display');
+            const paymentForm = document.getElementById('payment-form');
+            const simulatedPaymentAmountInput = document.getElementById('simulated-payment-amount');
+            const paymentValidationMessage = document.getElementById('payment-validation-message');
+            const cancelPaymentButton = document.getElementById('cancel-payment');
+
+            // Cargar el carrito desde localStorage al iniciar
+            let cart = JSON.parse(localStorage.getItem('cart')) || []; 
+
+            // Función para guardar el carrito en localStorage
+            function saveCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // Función para actualizar el carrito en la UI
+            function updateCartUI() {
+                cartItemsList.innerHTML = ''; // Limpiar la lista actual
+                let total = 0;
+
+                if (cart.length === 0) {
+                    cartItemsList.innerHTML = '<li style="text-align: center; color: var(--dark-grey);">El carrito está vacío.</li>';
+                    cartItemCount.style.display = 'none'; // Ocultar el contador
+                    checkoutButton.disabled = true; // Deshabilitar botón de pagar
+                } else {
+                    cart.forEach((item, index) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <span class="item-name">${item.name}</span>
+                            <span class="item-price">$${item.price.toFixed(2)}</span>
+                            <button class="remove-item" data-index="${index}">&times;</button>
+                        `;
+                        cartItemsList.appendChild(li);
+                        total += item.price;
+                    });
+                    cartItemCount.style.display = 'block'; // Mostrar el contador
+                    cartItemCount.textContent = cart.length;
+                    checkoutButton.disabled = false; // Habilitar botón de pagar
+                }
+                cartTotalPriceSpan.textContent = total.toFixed(2); // Actualizar total
+                saveCart(); // Guardar el carrito después de cada actualización de la UI
+            }
+
+            // Event listener para añadir productos al carrito
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.dataset.name;
+                    const productPrice = parseFloat(this.dataset.price);
+
+                    cart.push({ name: productName, price: productPrice });
+                    updateCartUI(); // Esto ahora también guardará en localStorage
+                    alert(`${productName} ha sido añadido al carrito.`);
+                    cartModal.style.display = 'flex'; // Abrir el carrito automáticamente
+                });
+            });
+
+            // Event listener para eliminar productos del carrito
+            cartItemsList.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-item')) {
+                    const indexToRemove = parseInt(event.target.dataset.index);
+                    cart.splice(indexToRemove, 1); // Eliminar el item del array
+                    updateCartUI(); // Actualizar la UI y guardar en localStorage
+                }
+            });
+
+            // Abrir/Cerrar Carrito Modal
+            cartIcon.addEventListener('click', function() {
+                cartModal.style.display = 'flex';
+                updateCartUI(); // Asegurarse de que el carrito esté actualizado al abrirlo
+            });
+
+            closeCartModal.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+
+            continueShoppingBtn.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+
+            // Abrir Modal de Pago
+            checkoutButton.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Tu carrito está vacío. No puedes proceder al pago.');
+                    return;
+                }
+                const total = parseFloat(cartTotalPriceSpan.textContent);
+                paymentAmountDisplay.textContent = total.toFixed(2);
+                simulatedPaymentAmountInput.value = ''; // Limpiar el input de monto simulado
+                paymentValidationMessage.textContent = ''; // Limpiar mensaje de validación
+                
+                cartModal.style.display = 'none'; // Cerrar carrito
+                paymentModal.style.display = 'flex'; // Abrir pago
+            });
+
+            // Cerrar Modal de Pago
+            closePaymentModal.addEventListener('click', function() {
+                paymentModal.style.display = 'none';
+                paymentForm.reset(); // Resetear el formulario
+                paymentValidationMessage.textContent = ''; // Limpiar mensaje de validación
+            });
+
+            cancelPaymentButton.addEventListener('click', function() {
+                paymentModal.style.display = 'none';
+                paymentForm.reset(); // Resetear el formulario
+                paymentValidationMessage.textContent = ''; // Limpiar mensaje de validación
+            });
+
+            // Simular Proceso de Pago
+            paymentForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evitar el envío real del formulario
+
+                const totalRequired = parseFloat(paymentAmountDisplay.textContent);
+                const simulatedAmount = parseFloat(simulatedPaymentAmountInput.value);
+
+                if (isNaN(simulatedAmount)) {
+                    paymentValidationMessage.textContent = 'Por favor, ingresa un monto válido.';
+                    paymentValidationMessage.className = 'error-message';
+                    return;
+                }
+
+                if (simulatedAmount === totalRequired) {
+                    paymentValidationMessage.textContent = '¡Felicidades, gracias por su compra!';
+                    paymentValidationMessage.className = 'success-message';
+                    
+                    // Simular un pequeño retraso antes de resetear
+                    setTimeout(() => {
+                        alert('¡Tu pago ha sido procesado con éxito! Recibirás un correo de confirmación.');
+                        cart = []; // Vaciar el carrito
+                        updateCartUI(); // Actualizar la UI del carrito y guardar el carrito vacío
+                        paymentModal.style.display = 'none'; // Cerrar el modal de pago
+                        paymentForm.reset(); // Resetear el formulario de pago
+                        paymentValidationMessage.textContent = '';
+                    }, 1500);
+
+                } else {
+                    paymentValidationMessage.textContent = 'Pago no validado. El monto ingresado no coincide con el total. Se cancela la compra.';
+                    paymentValidationMessage.className = 'error-message';
+                    
+                    // Simular un pequeño retraso antes de resetear
+                    setTimeout(() => {
+                        alert('La transacción ha sido cancelada debido a un monto incorrecto.');
+                        paymentForm.reset(); // Resetear el formulario de pago
+                        paymentValidationMessage.textContent = '';
+                    }, 2500);
+                }
+            });
+
+            // Cerrar modales si se hace clic fuera de ellos
+            window.addEventListener('click', function(event) {
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+                if (event.target == paymentModal) {
+                    paymentModal.style.display = 'none';
+                    paymentForm.reset();
+                    paymentValidationMessage.textContent = '';
+                }
+            });
+
+            // Inicializar el carrito al cargar la página (cargará desde localStorage o estará vacío)
+            updateCartUI();
+        });
+    </script>
+</body>
+</html>
