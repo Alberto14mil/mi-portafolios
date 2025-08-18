@@ -842,6 +842,7 @@ h1, h2, h3, h4 {
 }
 
 
+
 /* Estilos para el Asistente Virtual (FAQ en un chat-box) */
 #virtual-assistant {
     position: fixed;
@@ -854,7 +855,21 @@ h1, h2, h3, h4 {
 
 #virtual-assistant.hidden {
     transform: translateX(-100vw);
-    display: block; /* Mantenemos 'block' para la animación, pero lo movemos fuera de la vista */
+    display: block; 
+}
+
+/* Reglas específicas para dispositivos móviles */
+@media (max-width: 768px) {
+    #virtual-assistant {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .faq-chat-box {
+        width: 300px; /* Ajuste el ancho para pantallas más pequeñas */
+        max-width: 90vw;
+    }
 }
 
 .assistant-icon-container {
@@ -916,7 +931,6 @@ h1, h2, h3, h4 {
     flex-grow: 1;
 }
 
-/* Estilos de los ítems del menú desplegable */
 .faq-item {
     border-bottom: 1px solid var(--border-color);
 }
@@ -958,16 +972,4 @@ h1, h2, h3, h4 {
 .faq-item.active .faq-answer {
     max-height: 400px;
     padding: 10px;
-}
-
-/* Media Query para pantallas pequeñas */
-@media (max-width: 768px) {
-    #virtual-assistant {
-        bottom: 10px;
-        left: 10px;
-    }
-    .faq-chat-box {
-        width: calc(100vw - 40px);
-        max-width: 350px;
-    }
 }
