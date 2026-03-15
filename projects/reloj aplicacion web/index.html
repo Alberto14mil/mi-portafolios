@@ -16,7 +16,7 @@
 
     <header class="mb-8 flex justify-between items-center">
         <div>
-            <h1 class="text-3xl font-extrabold text-white tracking-tight">🛡️ Protector <span class="text-blue-500">v2.0</span></h1>
+            <h1 class="text-3xl font-extrabold text-white tracking-tight">🛡️ Protector <span class="text-blue-500">v2.1</span></h1>
             <p class="text-slate-500 text-sm">Auditoría de Tiempo y Capital</p>
         </div>
         <div class="text-right text-xs text-slate-400">
@@ -26,9 +26,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="glass p-6 rounded-2xl">
-            <h2 class="text-blue-400 font-bold mb-4 flex items-center gap-2">
-                📅 Horario Laboral
-            </h2>
+            <h2 class="text-blue-400 font-bold mb-4 flex items-center gap-2">📅 Horario Laboral</h2>
             <div class="space-y-4 text-sm">
                 <div>
                     <label class="block text-slate-400 mb-1">Días Laborales</label>
@@ -48,22 +46,15 @@
                         <input type="time" id="hora-salida" value="16:00" onchange="calcular()">
                     </div>
                 </div>
-                
                 <div class="flex gap-2 pt-2">
-                    <button onclick="actualizarTasas()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-2 rounded-lg transition uppercase">
-                        🔄 Refrescar
-                    </button>
-                    <button onclick="proyectarSiguienteDia()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white text-[10px] font-bold py-2 rounded-lg transition uppercase">
-                        📈 Mañana
-                    </button>
+                    <button onclick="actualizarTasas()" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-2 rounded-lg transition uppercase">🔄 Refrescar</button>
+                    <button onclick="proyectarSiguienteDia()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white text-[10px] font-bold py-2 rounded-lg transition uppercase">📈 Mañana</button>
                 </div>
             </div>
         </div>
 
         <div class="glass p-6 rounded-2xl space-y-4">
-            <h2 class="text-green-400 font-bold flex items-center gap-2">
-                💰 Tasas y Sueldo
-            </h2>
+            <h2 class="text-green-400 font-bold flex items-center gap-2">💰 Tasas y Sueldo</h2>
             <div class="space-y-3 text-sm">
                 <div>
                     <label class="block text-slate-400 mb-1 text-xs">Sueldo Nominal ($ BCV)</label>
@@ -81,8 +72,8 @@
                 </div>
             </div>
             <div class="p-3 bg-yellow-900/20 border border-yellow-800/50 rounded-xl">
-                <p class="text-[10px] text-yellow-500 uppercase font-bold">Euro BCV Oficial</p>
-                <p class="text-xl font-bold text-yellow-500" id="res-euro">Cargando...</p>
+                <p class="text-[10px] text-yellow-500 uppercase font-bold">Euro BCV (Referencial)</p>
+                <p class="text-xl font-bold text-yellow-500" id="res-euro">Calculando...</p>
             </div>
         </div>
     </div>
@@ -116,101 +107,90 @@
         </div>
     </div>
 
-   <script>
-    async function actualizarTasas() {
-        try {
-            // Usamos un proxy para evitar el error de CORS
-            const proxy = "https://api.allorigins.win/raw?url=";
-            const urlDolares = "https://ve.dolarapi.com/v1/dolares";
-            const urlEuro = "https://ve.dolarapi.com/v1/euro/oficial";
+    <script>
+        async function actualizarTasas() {
+            try {
+                // Paso 1: Intentar DolarApi con Proxy para BCV y Paralelo
+                const proxy = "https://api.allorigins.win/raw?url=";
+                const urlDolares = "https://ve.dolarapi.com/v1/dolares";
+                
+                const respUsd = await fetch(proxy + encodeURIComponent(urlDolares));
+                if (!respUsd.ok) throw new Error("Proxy caído");
+                const dataUsd = await respUsd.json();
 
-            // Obtener Dólares
-            const respUsd = await fetch(proxy + encodeURIComponent(urlDolares));
-            const dataUsd = await respUsd.json();
+                const tasaBCV = dataUsd.find(d => d.nombre === "Oficial").promedio;
+                const tasaP2P = dataUsd.find(d => d.nombre === "EnParaleloVzla").promedio;
 
-            // Obtener Euro
-            const respEuro = await fetch(proxy + encodeURIComponent(urlEuro));
-            const dataEuro = await respEuro.json();
+                document.getElementById('bcv').value = tasaBCV;
+                document.getElementById('p2p').value = tasaP2P;
 
-            const tasaBCV = dataUsd.find(d => d.nombre === "Oficial").promedio;
-            const tasaP2P = dataUsd.find(d => d.nombre === "EnParaleloVzla").promedio;
-            const tasaEuro = dataEuro.promedio;
+                // Paso 2: Calcular Euro en base a la relación USD/EUR internacional + Tasa BCV
+                // Esto es más fiable que depender de un tercer fetch que puede fallar
+                const respGlobal = await fetch('https://open.er-api.com/v6/latest/USD');
+                const dataGlobal = await respGlobal.json();
+                const ratioEurUsd = 1 / dataGlobal.rates.EUR; // Cuantos dólares vale un Euro
 
-            // Inyectar en la UI
-            document.getElementById('bcv').value = tasaBCV;
-            document.getElementById('p2p').value = tasaP2P;
-            document.getElementById('res-euro').innerText = tasaEuro.toFixed(2) + " €";
+                const euroBcvEstimado = tasaBCV * ratioEurUsd;
+                document.getElementById('res-euro').innerText = euroBcvEstimado.toFixed(2) + " €";
 
+                calcular();
+            } catch (error) {
+                console.error("Error: ", error);
+                document.getElementById('res-euro').innerText = "Manual";
+                // Si todo falla, al menos ejecutamos el cálculo con lo que hay en los inputs
+                calcular();
+            }
+        }
+
+        function calcular() {
+            const sueldo = parseFloat(document.getElementById('sueldo').value) || 0;
+            const bcv = parseFloat(document.getElementById('bcv').value) || 0;
+            const p2p = parseFloat(document.getElementById('p2p').value) || 0;
+            const diasSemana = parseInt(document.getElementById('esquema-dias').value);
+            const entrada = document.getElementById('hora-entrada').value;
+            const salida = document.getElementById('hora-salida').value;
+            const precioArt = parseFloat(document.getElementById('art-precio').value) || 0;
+
+            const hEntrada = new Date(`2026-01-01T${entrada}`);
+            const hSalida = new Date(`2026-01-01T${salida}`);
+            let diffMs = hSalida - hEntrada;
+            let horasDiarias = diffMs / (1000 * 60 * 60);
+            if(horasDiarias > 5) horasDiarias -= 1; 
+
+            const bsTotales = sueldo * bcv;
+            const usdtReales = bsTotales / p2p;
+            const perdida = sueldo - usdtReales;
+            
+            const diasAlMes = diasSemana * 4.34;
+            const horasTotalesMes = horasDiarias * diasAlMes;
+            const valorHora = usdtReales / horasTotalesMes;
+            const tiempoVida = precioArt / valorHora;
+
+            document.getElementById('res-usdt').innerText = usdtReales.toFixed(2) + " USDT";
+            document.getElementById('res-perdida').innerText = "-" + perdida.toFixed(2) + " $";
+            document.getElementById('res-hora').innerText = valorHora.toFixed(2) + " $";
+            
+            let tiempoTexto = "";
+            if(tiempoVida < 1) {
+                tiempoTexto = (tiempoVida * 60).toFixed(0) + " min";
+            } else {
+                tiempoTexto = tiempoVida.toFixed(1) + " h (" + (tiempoVida/horasDiarias).toFixed(1) + " d)";
+            }
+            document.getElementById('res-tiempo').innerText = tiempoTexto;
+        }
+
+        function proyectarSiguienteDia() {
+            const bcv = parseFloat(document.getElementById('bcv').value);
+            const p2p = parseFloat(document.getElementById('p2p').value);
+            document.getElementById('bcv').value = (bcv * 1.005).toFixed(2);
+            document.getElementById('p2p').value = (p2p * 1.01).toFixed(2);
             calcular();
-            console.log("Tasas actualizadas exitosamente con Proxy.");
-        } catch (error) {
-            console.error("Error al obtener tasas: ", error);
-            document.getElementById('res-euro').innerText = "Reintentando...";
-            // Intento secundario sin proxy por si acaso
-            intentarSinProxy();
         }
-    }
 
-    async function intentarSinProxy() {
-        try {
-            const respEuro = await fetch('https://ve.dolarapi.com/v1/euro/oficial');
-            const dataEuro = await respEuro.json();
-            document.getElementById('res-euro').innerText = dataEuro.promedio.toFixed(2) + " €";
-        } catch (e) {
-            document.getElementById('res-euro').innerText = "Manual";
-        }
-    }
-
-    // Tu función calcular() se mantiene exactamente igual...
-    function calcular() {
-        const sueldo = parseFloat(document.getElementById('sueldo').value) || 0;
-        const bcv = parseFloat(document.getElementById('bcv').value) || 0;
-        const p2p = parseFloat(document.getElementById('p2p').value) || 0;
-        const diasSemana = parseInt(document.getElementById('esquema-dias').value);
-        const entrada = document.getElementById('hora-entrada').value;
-        const salida = document.getElementById('hora-salida').value;
-        const precioArt = parseFloat(document.getElementById('art-precio').value) || 0;
-
-        const hEntrada = new Date(`2026-01-01T${entrada}`);
-        const hSalida = new Date(`2026-01-01T${salida}`);
-        let diffMs = hSalida - hEntrada;
-        let horasDiarias = diffMs / (1000 * 60 * 60);
-        if(horasDiarias > 5) horasDiarias -= 1; 
-
-        const bsTotales = sueldo * bcv;
-        const usdtReales = bsTotales / p2p;
-        const perdida = sueldo - usdtReales;
-        
-        const diasAlMes = diasSemana * 4.34;
-        const horasTotalesMes = horasDiarias * diasAlMes;
-        const valorHora = usdtReales / horasTotalesMes;
-        const tiempoVida = precioArt / valorHora;
-
-        document.getElementById('res-usdt').innerText = usdtReales.toFixed(2) + " USDT";
-        document.getElementById('res-perdida').innerText = "-" + perdida.toFixed(2) + " $";
-        document.getElementById('res-hora').innerText = valorHora.toFixed(2) + " $";
-        
-        let tiempoTexto = "";
-        if(tiempoVida < 1) {
-            tiempoTexto = (tiempoVida * 60).toFixed(0) + " min";
-        } else {
-            tiempoTexto = tiempoVida.toFixed(1) + " h (" + (tiempoVida/horasDiarias).toFixed(1) + " d)";
-        }
-        document.getElementById('res-tiempo').innerText = tiempoTexto;
-    }
-
-    function proyectarSiguienteDia() {
-        const bcv = parseFloat(document.getElementById('bcv').value);
-        const p2p = parseFloat(document.getElementById('p2p').value);
-        document.getElementById('bcv').value = (bcv * 1.005).toFixed(2);
-        document.getElementById('p2p').value = (p2p * 1.01).toFixed(2);
-        calcular();
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById('fecha-actual').innerText = new Date().toLocaleDateString();
-        actualizarTasas();
-    });
-</script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('fecha-actual').innerText = new Date().toLocaleDateString();
+            actualizarTasas();
+        });
+    </script>
 </body>
 </html>
