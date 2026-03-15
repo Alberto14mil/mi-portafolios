@@ -103,52 +103,83 @@
         </div>
     </div>
 
-    <script>
-        function calcular() {
-            // Datos
-            const sueldo = parseFloat(document.getElementById('sueldo').value) || 0;
-            const bcv = parseFloat(document.getElementById('bcv').value) || 0;
-            const p2p = parseFloat(document.getElementById('p2p').value) || 0;
-            const diasSemana = parseInt(document.getElementById('esquema-dias').value);
-            const entrada = document.getElementById('hora-entrada').value;
-            const salida = document.getElementById('hora-salida').value;
-            const precioArt = parseFloat(document.getElementById('art-precio').value) || 0;
+   <script>
+    // Función para obtener las tasas automáticamente desde una API
+    async function actualizarTasas() {
+        try {
+            // Usamos DolarApi para obtener BCV y Paralelo
+            const response = await fetch('https://ve.dolarapi.com/v1/dolares');
+            const data = await response.json();
 
-            // Calcular horas diarias
-            const hEntrada = new Date(`2026-01-01T${entrada}`);
-            const hSalida = new Date(`2026-01-01T${salida}`);
-            let diffMs = hSalida - hEntrada;
-            let horasDiarias = diffMs / (1000 * 60 * 60);
-            if(horasDiarias > 5) horasDiarias -= 1; // Restar 1h de almuerzo automáticamente
+            // Buscamos los valores específicos en el array que devuelve la API
+            const tasaBCV = data.find(d => d.nombre === "Oficial").promedio;
+            const tasaP2P = data.find(d => d.nombre === "EnParaleloVzla").promedio;
 
-            // Cálculos Financieros
-            const bsTotales = sueldo * bcv;
-            const usdtReales = bsTotales / p2p;
-            const perdida = sueldo - usdtReales;
-            
-            const diasAlMes = diasSemana * 4.34; // Promedio mensual semanas
-            const horasTotalesMes = horasDiarias * diasAlMes;
-            const valorHora = usdtReales / horasTotalesMes;
+            // Inyectamos los valores en los inputs de tu HTML
+            document.getElementById('bcv').value = tasaBCV;
+            document.getElementById('p2p').value = tasaP2P;
 
-            // Resultados Tiempo
-            const tiempoVida = precioArt / valorHora;
-
-            // Actualizar UI
-            document.getElementById('res-usdt').innerText = usdtReales.toFixed(2) + " USDT";
-            document.getElementById('res-perdida').innerText = "-" + perdida.toFixed(2) + " $";
-            document.getElementById('res-hora').innerText = valorHora.toFixed(2) + " $";
-            
-            let tiempoTexto = "";
-            if(tiempoVida < 1) {
-                tiempoTexto = (tiempoVida * 60).toFixed(0) + " min";
-            } else {
-                tiempoTexto = tiempoVida.toFixed(1) + " h (" + (tiempoVida/horasDiarias).toFixed(1) + " d)";
-            }
-            document.getElementById('res-tiempo').innerText = tiempoTexto;
+            // Ejecutamos el cálculo inicial con los datos frescos
+            calcular();
+        } catch (error) {
+            console.error("Error al obtener tasas: ", error);
+            // Si falla, el usuario aún puede usar los valores manuales
         }
+    }
 
+    function calcular() {
+        // Datos
+        const sueldo = parseFloat(document.getElementById('sueldo').value) || 0;
+        const bcv = parseFloat(document.getElementById('bcv').value) || 0;
+        const p2p = parseFloat(document.getElementById('p2p').value) || 0;
+        const diasSemana = parseInt(document.getElementById('esquema-dias').value);
+        const entrada = document.getElementById('hora-entrada').value;
+        const salida = document.getElementById('hora-salida').value;
+        const precioArt = parseFloat(document.getElementById('art-precio').value) || 0;
+
+        // Calcular horas diarias
+        const hEntrada = new Date(`2026-01-01T${entrada}`);
+        const hSalida = new Date(`2026-01-01T${salida}`);
+        let diffMs = hSalida - hEntrada;
+        let horasDiarias = diffMs / (1000 * 60 * 60);
+        
+        // Restar 1h de almuerzo si la jornada es mayor a 5h
+        if(horasDiarias > 5) horasDiarias -= 1; 
+
+        // Cálculos Financieros
+        const bsTotales = sueldo * bcv;
+        const usdtReales = bsTotales / p2p;
+        const perdida = sueldo - usdtReales;
+        
+        const diasAlMes = diasSemana * 4.34; // Promedio mensual semanas
+        const horasTotalesMes = horasDiarias * diasAlMes;
+        const valorHora = usdtReales / horasTotalesMes;
+
+        // Resultados Tiempo
+        const tiempoVida = precioArt / valorHora;
+
+        // Actualizar UI
+        document.getElementById('res-usdt').innerText = usdtReales.toFixed(2) + " USDT";
+        document.getElementById('res-perdida').innerText = "-" + perdida.toFixed(2) + " $";
+        document.getElementById('res-hora').innerText = valorHora.toFixed(2) + " $";
+        
+        let tiempoTexto = "";
+        if(tiempoVida < 1) {
+            tiempoTexto = (tiempoVida * 60).toFixed(0) + " min";
+        } else {
+            tiempoTexto = tiempoVida.toFixed(1) + " h (" + (tiempoVida/horasDiarias).toFixed(1) + " d)";
+        }
+        document.getElementById('res-tiempo').innerText = tiempoTexto;
+    }
+
+    // Al cargar el documento
+    document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('fecha-actual').innerText = new Date().toLocaleDateString();
+        // Intentar actualizar tasas automáticamente
+        actualizarTasas();
+        // Si no hay internet o falla la API, el calcular() se llama dentro de actualizarTasas o aquí como respaldo
         calcular();
-    </script>
+    });
+</script>
 </body>
 </html>
